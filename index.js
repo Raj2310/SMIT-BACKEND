@@ -3,7 +3,7 @@ let app = express(); //init Express
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let User=require('./model/User.model')
-mongoose.connect('localhost:27017/test');
+mongoose.connect('mongodb://admin:1staprilwtf@ds145039.mlab.com:45039/flighting');
 //init bodyParser to extract properties from POST data
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
