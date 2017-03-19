@@ -14,7 +14,7 @@ db.once('open', function() {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 5000;
 //init Express Router
 let router = express.Router();
 
