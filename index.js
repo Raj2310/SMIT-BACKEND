@@ -47,6 +47,18 @@ let obj = new User({ name: name,email:email,password:password });
 	});
 });
 
+router.get('/getUser/:email',(req,res)=>{
+let email=req.params.email;
+   User.findOne({email:email},(err,result)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false});
+    } else {
+      res.send({status:true,user:result})
+    }
+   })
+})
+
 router.get('/allUsers',function(req,res){
 
 	User.find(function (err, users) {
