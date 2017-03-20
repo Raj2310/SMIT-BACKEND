@@ -33,7 +33,8 @@ router.post('/login',(req,res)=>{
       console.log(err);
       res.send({status:false});
     } else {
-      res.send({status:true,user:result});
+      let token=jwt.generateToken({name:result.name,email:result.email});
+      res.send({status:true,authKey:token});
     }
   });
 });
