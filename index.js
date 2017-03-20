@@ -23,17 +23,19 @@ router.get('/', (req, res)=> {
   res.json({ message: 'App is running!' });
 });
 
-router.get('/test',(req,res)=>{
-  let token=jwt.generateToken();
-  console.log(token);
-  res.send(token);
-});
-
-router.get('/test1/:token',(req,res)=>{
-  let token=req.params.token;
-  let obj=jwt.varifyToken(token);
-  console.log("Returned Object : "+obj);
-  res.send(obj);
+router.post('/login',(req,res)=>{
+  let email=req.body.email;
+  let password=req.body.password;
+  console.log("Request Body: "+req.body);
+  console.log("email: "+email+" password: "+password);
+  User.findOne({email:email,password:password},(err,result)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false});
+    } else {
+      res.send({status:true,user:result});
+    }
+  });
 });
 
 
@@ -73,14 +75,6 @@ router.get('/getUser/:key',(req,res)=>{
     let authkey=req.params.key;
     let user=jwt.varifyToken(authkey);
     res.send(user.object);
-   /*User.findOne({email:email},(err,result)=>{
-    if (err) {
-      console.log(err);
-      res.send({status:false});
-    } else {
-      res.send({status:true,user:result})
-    }
-   })*/
 })
 
 router.get('/allUsers',(req,res)=>{
