@@ -7,11 +7,13 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
-    "mongoose": "^4.9.0"
+    "mongoose": "^4.9.0",
+    "nodemon": "^1.11.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev":"nodemon index.js"
   },
   "author": "",
   "license": "ISC"
