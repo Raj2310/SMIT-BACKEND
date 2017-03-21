@@ -5,19 +5,19 @@ let Schema=mongoose.Schema;
 
 let FlightSchema= new Schema({
 	flightNumber:{
-		type:string,
+		type:String,
 		unique:true
 	},
 	source:{
-		type:Schema.types.ObjectId,
+		type:Schema.ObjectId,
 		ref:'Airport'
 	},
 	destination:{
-		type:Schema.types.ObjectId,
+		type:Schema.ObjectId,
 		ref:'Airport'
 	},
 	time:{
-		type:string
+		type:String
 	}
 
 })

@@ -35,11 +35,11 @@ const authKey=req.params.authKey;
         if (err) {
           const error=err.errors;
           console.error(error);
-          if (error.name) {
+          if (error && error.name) {
              res.send({status:false,message:error.name.message});
-          } else if(error.password){
+          } else if(error && error.password){
             res.send({status:false,message:error.password.message});
-          }else if(error.email){
+          }else if(error && error.email){
             res.send({status:false,message:error.email.message});
           }else{
             res.send({status:false,message:"there was some error"})
