@@ -1,0 +1,134 @@
+﻿
+Location	Airport	Size
+Agartala	Singerbhil Airport (IXA)
+Agatti Island	Agatti Island Airport (AGX)	■■■■■
+Agra	Kheria Airport (AGR)	■■■■■
+Ahmedabad	Ahmedabad Airport (AMD)	■■■■■
+Aizawl	Aizawl Airport (AJL)	■■■■■
+Akola	Akola Airport (AKD)	■■■■■
+Allahabad	Bamrauli Airport (IXD)	■■■■■
+Along	Along Airport (IXV)	■■■■■
+Amritsar	Raja Sansi Airport (ATQ)	■■■■■
+Aurangabad	Chikkalthana Airport (IXU)	■■■■■
+Bagdogra	Bagdogra Airport (IXB)	■■■■■
+Balurghat	Balurghat Airport (RGH)	■■■■■
+Bangalore	Hindustan Airport (BLR)	■■■■■
+Bareli	Bareli Airport (BEK)	■■■■■
+Belgaum	Sambre Airport (IXG)	■■■■■
+Bellary	Bellary Airport (BEP)	■■■■■
+Bhatinda	Bhatinda Airport (BUP)	■■■■■
+Bhavnagar	Bhavnagar Airport (BHU)	■■■■■
+Bhopal	Bhopal Airport (BHO)	■■■■■
+Bhubaneswar	Bhubaneswar Airport (BBI)	■■■■■
+Bhuj	Rudra Mata Airport (BHJ)	■■■■■
+Bikaner	Bikaner Airport (BKB)	■■■■■
+Bilaspur	Bilaspur Airport (PAB)	■■■■■
+Bombay (Mumbai)	Chhatrapati Shivaji Airport (BOM)	■■■■■
+Calcutta (Kolkata)	Netaji Subhas Chandra Airport (CCU)	■■■■■
+Car Nicobar	Car Nicobar Airport (CBD)	■■■■■
+Chandigarh	Chandigarh Airport (IXC)	■■■■■
+Coimbatore	Peelamedu Airport (CJB)	■■■■■
+Cooch Behar	Cooch Behar Airport (COH)	■■■■■
+Cuddapah	Cuddapah Airport (CDP)	■■■■■
+Daman	Daman Airport (NMB)	■■■■■
+Daparizo	Daparizo Airport (DAE)	■■■■■
+Darjeeling	Darjeeling Airport (DAI)	■■■■■
+Dehra Dun	Dehra Dun Airport (DED)	■■■■■
+Delhi	Indira Gandhi International Airport (DEL)	■■■■■
+Deparizo	Deparizo Airport (DEP)	■■■■■
+Dhanbad	Dhanbad Airport (DBD)	■■■■■
+Dharamsala	Gaggal Airport (DHM)	■■■■■
+Dibrugarh	Chabua Airport (DIB)	■■■■■
+Dimapur	Dimapur Airport (DMU)	■■■■■
+Diu	Diu Airport (DIU)	■■■■■
+Gaya	Gaya Airport (GAY)	■■■■■
+Goa	Dabolim Airport (GOI)	■■■■■
+Gorakhpur	Gorakhpur Airport (GOP)	■■■■■
+Guna	Guna Airport (GUX)	■■■■■
+Guwahati	Borjhar Airport (GAU)	■■■■■
+Gwalior	Gwalior Airport (GWL)	■■■■■
+Hissar	Hissar Airport (HSS)	■■■■■
+Hubli	Hubli Airport (HBX)	■■■■■
+Hyderabad	Begumpet Airport (HYD)	■■■■■
+Imphal	Municipal Airport (IMF)	■■■■■
+Indore	Indore Airport (IDR)	■■■■■
+Jabalpur	Jabalpur Airport (JLR)	■■■■■
+Jagdalpur	Jagdalpur Airport (JGB)	■■■■■
+Jaipur	Sanganeer Airport (JAI)	■■■■■
+Jaisalmer	Jaisalmer Airport (JSA)	■■■■■
+Jammu	Satwari Airport (IXJ)	■■■■■
+Jamnagar	Govardhanpur Airport (JGA)	■■■■■
+Jamshedpur	Sonari Airport (IXW)	■■■■■
+Jeypore	Jeypore Airport (PYB)	■■■■■
+Jodhpur	Jodhpur Airport (JDH)	■■■■■
+Jorhat	Rowriah Airport (JRH)	■■■■■
+Kailashahar	Kailashahar Airport (IXH)	■■■■■
+Kamalpur	Kamalpur Airport (IXQ)	■■■■■
+Kandla	Kandla Airport (IXY)	■■■■■
+Kanpur	Kanpur Airport (KNU)	■■■■■
+Keshod	Keshod Airport (IXK)	■■■■■
+Khajuraho	Khajuraho Airport (HJR)	■■■■■
+Khowai	Khowai Airport (IXN)	■■■■■
+Kochi	Kochi Airport (COK)	■■■■■
+Kolhapur	Kolhapur Airport (KLH)	■■■■■
+Kota	Kota Airport (KTU)	■■■■■
+Kozhikode	Calicut International Airport (CCJ)	■■■■■
+Kulu	Bhuntar Airport (KUU)	■■■■■
+Leh	Leh Airport (IXL)	■■■■■
+Lilabari	Lilabari Airport (IXI)	■■■■■
+Lucknow	Amausi Airport (LKO)	■■■■■
+Ludhiana	Ludhiana Airport (LUH)	■■■■■
+Madras (Chennai)	Chennai Airport (MAA)	■■■■■
+Madurai	Madurai Airport (IXM)	■■■■■
+Malda	Malda Airport (LDA)	■■■■■
+Mangalore	Bajpe Airport (IXE)	■■■■■
+Mohanbari	Mohanbari Airport (MOH)	■■■■■
+Muzaffarnagar	Muzaffarnagar Airport (MZA)	■■■■■
+Muzaffarpur	Muzaffarpur Airport (MZU)	■■■■■
+Mysore	Mysore Airport (MYQ)	■■■■■
+Nagpur	Sonegaon Airport (NAG)	■■■■■
+Nanded	Nanded Airport (NDC)	■■■■■
+Nasik	Gandhinagar Airport (ISK)	■■■■■
+Neyveli	Neyveli Airport (NVY)	■■■■■
+Osmanabad	Osmanabad Airport (OMN)	■■■■■
+Pantnagar	Pantnagar Airport (PGH)	■■■■■
+Pasighat	Pasighat Airport (IXT)	■■■■■
+Pathankot	Pathankot Airport (IXP)	■■■■■
+Patna	Patna Airport (PAT)	■■■■■
+Pondicherry	Pondicherry Airport (PNY)	■■■■■
+Porbandar	Porbandar Airport (PBD)	■■■■■
+Port Blair	Port Blair Airport (IXZ)	■■■■■
+Pune	Lohegaon Airport (PNQ)	■■■■■
+Puttaparthi	Puttaprathe Airport (PUT)	■■■■■
+Raipur	Raipur Airport (RPR)	■■■■■
+Rajahmundry	Rajahmundry Airport (RJA)	■■■■■
+Rajkot	Civil Airport (RAJ)	■■■■■
+Rajouri	Rajouri Airport (RJI)	■■■■■
+Ramagundam	Ramagundam Airport (RMD)	■■■■■
+Ranchi	Ranchi Airport (IXR)	■■■■■
+Ratnagiri	Ratnagiri Airport (RTC)	■■■■■
+Rewa	Rewa Airport (REW)	■■■■■
+Rourkela	Rourkela Airport (RRK)	■■■■■
+Rupsi	Rupsi Airport (RUP)	■■■■■
+Salem	Salem Airport (SXV)	■■■■■
+Satna	Satna Airport (TNI)	■■■■■
+Shillong	Shillong Airport (SHL)	■■■■■
+Sholapur	Sholapur Airport (SSE)	■■■■■
+Silchar	Kumbhirgram Airport (IXS)	■■■■■
+Simla	Simla Airport (SLV)	■■■■■
+Srinagar	Srinagar Airport (SXR)	■■■■■
+Surat	Surat Airport (STV)	■■■■■
+Tezpur	Salonibari Airport (TEZ)	■■■■■
+Tezu	Tezu Airport (TEI)	■■■■■
+Thanjavur	Thanjavur Airport (TJV)	■■■■■
+Thiruvananthapuram	Thiruvananthapuram International Airport (TRV)	■■■■■
+Tiruchirapally	Civil Airport (TRZ)	■■■■■
+Tirupati	Tirupati Airport (TIR)	■■■■■
+Tuticorin	Tuticorin Airport (TCR)	■■■■■
+Udaipur	Dabok Airport (UDR)	■■■■■
+Vadodara	Vadodara Airport (BDQ)	■■■■■
+Varanasi	Varanasi Airport (VNS)	■■■■■
+Vijayawada	Vijayawada Airport (VGA)	■■■■■
+Visakhapatnam	Visakhapatnam Airport (VTZ)	■■■■■
+Warangal	Warangal Airport (WGC)	■■■■■
+Zero	Zero Airport (ZER)
