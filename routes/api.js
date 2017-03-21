@@ -1,16 +1,9 @@
 var express = require('express')
 var router = express.Router();
 
-let mongoose = require('mongoose');
 let User=require('../utils/model/User.model')
 let jwt=require('../utils/jwtAuth.js')
-mongoose.connect('localhost:27017/test');
-//init bodyParser to extract properties from POST data
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', ()=> {
-  console.log("we are connected!");
-});
+
 
 router.get('/', (req, res)=> {
   res.json({ message: 'App is running!' });

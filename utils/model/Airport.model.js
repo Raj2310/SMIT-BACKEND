@@ -9,6 +9,13 @@ let AirportSchema=new Schema({
 		type:String
 	},
 	address:{
+		type:String,
+		required:false
+	},
+	city:{
+		type:String
+	},
+	name:{
 		type:String
 	}
 });
