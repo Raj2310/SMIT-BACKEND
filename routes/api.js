@@ -1,8 +1,10 @@
 var express = require('express')
 var router = express.Router();
-
-let User=require('../utils/model/User.model')
-let jwt=require('../utils/jwtAuth.js')
+let mongoose = require('mongoose');
+let User=require('../utils/model/User.model');
+let Booking=require('../utils/model/Booking.model');
+let Flight=require('../utils/model/Flight.model');
+let jwt=require('../utils/jwtAuth.js');
 
 
 router.get('/', (req, res)=> {
@@ -71,5 +73,36 @@ router.get('/allUsers',(req,res)=>{
     })
 })
 
+router.get('/bookTicket/:flight/:user',(req,res)=>{
+   const flight=req.params.flight;
+   const user=req.params.user;
+   Flight.findOne({_id:mongoose.Types.ObjectId(flight)},(err,flight)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false,msg:"An error occured"});
+    } else if(flight){
+      User.findOne({_id:mongoose.Types.ObjectId(user)},(err1,user)=>{
+        if(err1){
+          console.log(err1);
+           res.send({status:false,msg:"An error occured"});
+        }else if(user){
+            const bookingObj= new Booking({user:user._id,flight:flight._id});
+            bookingObj.save((err2,booking)=>{
+              if(err2){
+                console.log(err2);
+                res.send({status:false,msg:"An error occured"});
+              }else{
+                res.send({status:true,obj:booking});
+              }
+            })
+        }else{
+           res.send({status:false,msg:"User Not Found"});
+        }
+      });
+    }else{
+       res.send({status:false,msg:"Flight not found"});
+    }
+  });
+})
 
 module.exports = router

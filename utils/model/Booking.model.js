@@ -3,25 +3,21 @@ let mongoose=require('mongoose');
 let Schema=mongoose.Schema;
 
 let BookingSchema= new Schema({
- bookingId:{
- 	type:string,
- 	required:true,
- 	unique:true
- },
  flight:{
- 	type:Schema.types.ObjectId,
+ 	type:Schema.ObjectId,
  	ref:'Flight',
  	require:true
  },
  user:{
- 	type:Schema.types.ObjectId,
+ 	type:Schema.ObjectId,
  	ref:'User',
  	require:true
  },
  boarding:{
  	id:{
- 		type:string,
- 		unique:true
+ 		type:String,
+ 		unique:true,
+ 		required:false
  	}
  }
 });
