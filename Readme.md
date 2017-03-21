@@ -7,3 +7,8 @@
 
 ### Database ###
 url : mongodb://admin:1staprilwtf@ds145039.mlab.com:45039/flighting
+
+
+## Instruction ##
+
++ Run in developement version using "npm run dev"
