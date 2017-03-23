@@ -18,10 +18,16 @@ router.post('/login',(req,res)=>{
   User.findOne({email:email,password:password},(err,result)=>{
     if (err) {
       console.log(err);
-      res.send({status:false});
+      
     } else {
-      let token=jwt.generateToken({name:result.name,email:result.email});
+      if(result){
+                let token=jwt.generateToken({name:result.name,email:result.email});
       res.send({status:true,authKey:token});
+      }
+      else{
+        res.send({status:false,msg:"User not found"});
+      }
+      
     }
   });
 });
