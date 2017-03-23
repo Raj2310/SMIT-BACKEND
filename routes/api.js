@@ -7,6 +7,7 @@ let Flight=require('../utils/model/Flight.model');
 let jwt=require('../utils/jwtAuth.js');
 
 
+
 router.get('/', (req, res)=> {
   res.json({ message: 'App is running!' });
 });
@@ -71,6 +72,48 @@ router.get('/allUsers',(req,res)=>{
         console.log(users);
         res.send(users);
     })
+})
+
+router.post('/generateBoardingPass',(req,res)=>{
+  const bookingId=req.body.b_id;
+  const seat_no=req.body.seatNo;
+  Booking.findById(bookingId, function (err, booking) {
+    if (err) {
+      console.log(err);
+      res.send({status:false,msg:"An error occured"});
+    }
+    else{
+      booking.boarding.seatNo = seat_no;
+      tank.save(function (err1, updatedBooking) {
+        if (err1) {
+          console.log(err1);
+          res.send({status:false,msg:"An error occured"});
+        }
+        else{
+            res.send({status:true,obj:updatedBooking});  
+        }
+     });
+    }
+  });
+});
+
+router.post('/msgFrmServer',(req,res)=>{
+Booking.findOneAndUpdate({BookingId: req.body.b_id}, {$push: {msg: req.body.msg}},(err,result)=>{
+  if(err){
+    console.log(err);
+    res.send(error);
+  }
+  else{
+    res.send(result);
+  }
+});
+});
+
+router.get('/booking/:bookingId',(req,res)=>{
+  const b_id=req.params.bookingId;
+  Booking.find({BookingId:b_id},(err,bookings)=>{
+    res.send(bookings);
+  });
 })
 
 router.get('/bookTicket/:flight/:user',(req,res)=>{

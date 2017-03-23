@@ -8,12 +8,13 @@
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "dev":"nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC"
