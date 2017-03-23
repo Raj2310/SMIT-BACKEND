@@ -21,7 +21,7 @@ router.post('/login',(req,res)=>{
       
     } else {
       if(result){
-                let token=jwt.generateToken({name:result.name,email:result.email});
+      let token=jwt.generateToken({name:result.name,email:result.email});
       res.send({status:true,authKey:token});
       }
       else{
