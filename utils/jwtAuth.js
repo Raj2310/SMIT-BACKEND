@@ -11,6 +11,7 @@
  	 var decoded = jwt.verify(token, 'shhhhh');
  	 return {status:true,object:decoded};
 	} catch(err) {
+      console.log("error in promises",err);
   		return {status:false}
 	}
   }

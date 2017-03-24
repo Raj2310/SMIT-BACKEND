@@ -5,6 +5,7 @@ let User=require('../utils/model/User.model');
 let Booking=require('../utils/model/Booking.model');
 let Flight=require('../utils/model/Flight.model');
 let jwt=require('../utils/jwtAuth.js');
+let dbService=require('../utils/dbService.js');
 
 
 
@@ -64,7 +65,90 @@ const authKey=req.params.authKey;
        res.send({status:false,message:"Authentication Failed"})
   }
 });
+router.get('/userFlightsInfo/:Key',(req,res)=>{
+   let responseObj={
+    bookings:[]
+  };
+  const authkey=req.params.Key;
+  dbService.varifyAuthkey(authkey).then((userObject)=> {
+    responseObj.user=userObject.object;
+    return  dbService.getUserByEmail(userObject.object.email);
+  },(err)=> {
+    console.log(err); // Error: "It broke"
+    res.send("Some error occured");
+  }).then((user)=>{
+      const userid=user._id;
+      console.log(userid);
+      return dbService.getBookingForUser(userid);
+  },(errorUserSchema)=>{
+      console.log(errorUserSchema);
+       res.send("Some error occured in User Schema");
+  }).then((arrbooking)=>{
+    responseObj.bookings=arrbooking;
+    res.send(responseObj);
+  },(errbooking)=>{
+    console.log(errbooking);
+    res.send("Some error occured in User Schema");
+  });
+  /*
+dbService.getUserByEmail(userObject.object.email).then((user)=>{
+      const userid=user._id;
+      console.log(userid);
+      dbService.getBookingForUser(userid).then((arrbooking)=>{
+        responseObj.bookings=arrbooking;
+        res.send(responseObj);
+      },(errbooking)=>{
+        console.log(errbooking);
+        res.send("Some error occured in User Schema");
+      })
+      
+    },(errorUserSchema)=>{
+      console.log(errorUserSchema);
+       res.send("Some error occured in User Schema");
+    });
+  */
+ /* let responseObj={
+    bookings:[]
+  };
+  //obtain user email
+  const authkey=req.params.key;
+  const user=jwt.varifyToken(authkey);
+  //obtain userId from Email
+  responseObj.email=user.email;
+  responseObj.name=user.name;
+  User.findOne({email:"dey7.kol@gmail.com"},(err,userret)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false,msg:"Error occured User not found"});
+    } else {
+      if(userret){
+        const user_id=userret._id;
+        responseObj.user=userret;
+        Booking.find({user:user_id},(errBooking,bookingsret)=>{
+            console.log(responseObj.bookings);
+            bookingsret.forEach((booking)=>{
+              console.log(booking);
+              const flight_id=booking.flight;
+              const bookingObj={};
+              bookingObj.seatNo=booking.boarding.seatNo;
+              bookingObj.messeges=booking.msg;
+              booking.bookingNo=booking.BookingId;
+              //Retrieve flight Info
+              Flight.findOne({_id:flight_id},(errFlight,flight)=>{
+                bookingObj.flightInfo=flight;
+                responseObj.bookings.push(bookingObj);
+                  res.send(responseObj);
+              });
+              
+            });
+        });
+      }else{
+          res.send({status:false,msg:"User not found"});
+      }
+    }
+  })*/
 
+})
 router.get('/getUser/:key',(req,res)=>{
     let authkey=req.params.key;
     let user=jwt.varifyToken(authkey);
