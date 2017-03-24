@@ -15,3 +15,5 @@
 + /api/booking/:bookingId : GET , Info of ticket booked 
 
 + /api/bookTicket/:flight/:user : GET , book a new ticket 
+
++ /api/userFlightsInfo/:Key : GET , List of bookings
