@@ -27,7 +27,7 @@ let services=require('../utils/services');
     console.error("Failed!", error);
   })
 });*/
-router.get('/addFlights',(req,res)=>{
+/*router.get('/addFlights',(req,res)=>{
   const FlightNo=Math.ceil(services.getRandomArbitrary(100000,999999));
   const timeOfFlight=Math.ceil(services.getRandomArbitrary(0,23))+":"+Math.ceil(services.getRandomArbitrary(0,59));
   let source_ap={};
@@ -58,5 +58,5 @@ router.get('/addFlights',(req,res)=>{
     })
   });
   
-})
+})*/
 module.exports = router
