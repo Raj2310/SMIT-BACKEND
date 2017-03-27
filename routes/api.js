@@ -15,7 +15,7 @@ router.get('/', (req, res)=> {
 router.post('/login',(req,res)=>{
   let email=req.body.email;
   let password=req.body.password;
-  User.findOne({email:email,password:password},(err,result)=>{
+  User.find({email:email,password:password},(err,result)=>{
     if (err) {
       console.log(err);
       res.send({status:false});
