@@ -1,0 +1,58 @@
+body{
+	background-image: url("static/img/bg.jpg");
+	repeat: no-repeat;
+	margin:0;
+	padding: 0;
+}
+
+.btn{
+	margin: 0 0 0 10px;
+	padding: 10px;
+	width: 120px;
+}
+
+.form{
+	width: 550px;
+	background-image: url("../img/metal.jpg");
+	margin:2em auto 0 auto;
+	padding: 0 0 10px 0;
+	border: #F1F1F1 solid 5px;
+}
+
+form{
+	width: 500px;
+	margin: 0 auto 0 auto;
+}
+
+label{
+	display: block;
+	margin: 0.3em 0 0.3em 2em;
+	color:#0000ff;
+	font-size: 1em;
+}
+
+input{
+	width:250px; 
+	margin: 0 0 0 2em;
+}
+
+textarea{
+	width:250px; 
+	margin: 0 0 0 2em;
+}
+
+.buttons{
+	margin-top: 14px;
+	margin-left: 15px;
+}
+
+h3{
+	margin-left: 35px;
+	color: #0000ff;
+}
+
+p{
+	color:#0066ff;
+	margin-left: 35px;
+	font-size:20px;
+}
