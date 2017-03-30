@@ -10,6 +10,9 @@ let BookingSchema= new Schema({
  	ref:'Flight',
  	require:true
  },
+ date:{
+ 	type:Date
+ },
  user:{
  	type:Schema.ObjectId,
  	ref:'User',

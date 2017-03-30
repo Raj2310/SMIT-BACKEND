@@ -9,6 +9,10 @@ let UserSchema = new Schema({
 		required:[true,'Name is required'],
 		select:true
 	},
+	subscriptionKey:{
+		type:String,
+		default:null
+	},
 	email:{
 		type:String,
 		required:[true,'Email id is required'],
