@@ -9,7 +9,8 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.0",
     "nodemon": "^1.11.0",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "web-push": "^3.2.2"
   },
   "devDependencies": {},
   "scripts": {

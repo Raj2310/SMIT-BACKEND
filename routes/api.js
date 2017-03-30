@@ -6,11 +6,12 @@ let Booking=require('../utils/model/Booking.model');
 let Flight=require('../utils/model/Flight.model');
 let jwt=require('../utils/jwtAuth.js');
 let dbService=require('../utils/dbService.js');
+let webpush=require('../utils/webpush.js');
 
 
 
 router.get('/', (req, res)=> {
-  res.json({ message: 'App is running!' });
+  res.json({ message: webpush.pub_key });
 });
 
 router.post('/login',(req,res)=>{
@@ -23,7 +24,7 @@ router.post('/login',(req,res)=>{
     } else {
       if(result){
       let token=jwt.generateToken({name:result.name,email:result.email});
-      res.send({status:true,authKey:token});
+      res.send({status:true,authKey:token,pub_noti_token:webpush.pub_key});
       }
       else{
         res.send({status:false,msg:"User not found"});
@@ -32,6 +33,10 @@ router.post('/login',(req,res)=>{
     }
   });
 });
+
+router.get('/addUser/:key',function(req,res){
+  const authkey=req.params.key;
+})
 
 
 router.get('/register/:authKey/:name/:email/:password',function(req,res){
@@ -58,7 +63,7 @@ const authKey=req.params.authKey;
         else{
           console.log(user);
           let token=jwt.generateToken({name:user.name,email:user.email});
-          res.send({status:true,authKey:token});
+          res.send({status:true,authKey:token,pub_noti_token:webpush.pub_key});
         }
       });
   }else{
