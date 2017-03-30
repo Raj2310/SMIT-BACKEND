@@ -219,7 +219,7 @@ router.get('/bookTicket/:flight/:user',(req,res)=>{
           console.log(err1);
            res.send({status:false,msg:"An error occured"});
         }else if(user){
-            const bookingObj= new Booking({user:user._id,flight:flight._id});
+            const bookingObj= new Booking({user:user._id,flight:flight._id,date:Date.now()});
             bookingObj.save((err2,booking)=>{
               if(err2){
                 console.log(err2);
