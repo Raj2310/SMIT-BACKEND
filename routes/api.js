@@ -192,6 +192,28 @@ router.post('/generateBoardingPass',(req,res)=>{
   });
 });
 
+router.post('/push-subscribe',(req,res)=>{
+const authkey=req.body.authKey;
+const subscription=req.body.subs;
+dbService.varifyAuthkey(authkey).then((userObject)=> {
+  console.log(userObject);
+  const userEmail=userObject.object.email;
+  User.findOneAndUpdate({email: userEmail}, {$set: {subscriptionKey: subscription}},(err,result)=>{
+  if(err){
+    console.log(err);
+    res.send(error);
+  }
+  else{
+    res.send(result);
+  }
+  });
+  //const userEmail=userObject.object.email;
+}).catch(function(error){
+ res.send({status:false,msg:"User not found"});
+});
+});
+
+
 router.post('/msgFrmServer',(req,res)=>{
 Booking.findOneAndUpdate({BookingId: req.body.b_id}, {$push: {msg: req.body.msg}},(err,result)=>{
   if(err){
