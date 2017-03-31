@@ -8,7 +8,7 @@
 	const pub_key="BNASTKuZMTWIM7lkZ30f_R4swIttSInEwIKdIAO8rmUoz8sAg51mR4a-Qn4Jm9Fs4_qmvDbKrSPHMWKXdmdXNfs";
 	const priv_key="4OZnNldJbw-fmHFvFGgqYV7hSHFihLnj1ehP9cmDygQ";
 	exports.sendPushNotification=function(userId,msg){
-		 /*User.findOne({'_id':mongoose.Types.ObjectId(userId)},(err,result)=>{
+		 User.findOne({'_id':mongoose.Types.ObjectId(userId)},(err,result)=>{
 		    if (err) {
 		      console.log(err);
 		      res.send({status:false});
@@ -39,8 +39,8 @@
 				    }
 				  });
 			}       
-		});*/
-		const options = {
+		});
+		/*const options = {
             vapidDetails: {
               subject: 'https://github.com/Raj2310/flightingPwa',
               publicKey:  pub_key,
@@ -63,6 +63,6 @@
 				    } else {
 				      console.log("error",err.message);
 				    }
-          });
+          });*/
 	}
 })();
