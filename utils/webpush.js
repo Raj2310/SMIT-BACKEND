@@ -3,6 +3,6 @@
 	let fs = require('fs');
 	const webpush = require('web-push');
     var exports = module.exports = {};
-	exports.pub_key="BNsOYNHD3ZhfoTzMABJt8KT7iUhz2KyG_GfUY-91GkE_4D4HWmups26SMJGF58LBX884dD2VkukiR5VDWqSJhi0";
-	exports.priv_key="q5KyzWMF7_o3GUfv_p-vYX8nRILRSKGKCs5erktzWxA";
+	exports.pub_key="BNASTKuZMTWIM7lkZ30f_R4swIttSInEwIKdIAO8rmUoz8sAg51mR4a-Qn4Jm9Fs4_qmvDbKrSPHMWKXdmdXNfs";
+	exports.priv_key="4OZnNldJbw-fmHFvFGgqYV7hSHFihLnj1ehP9cmDygQ";
 })();

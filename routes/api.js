@@ -7,11 +7,40 @@ let Flight=require('../utils/model/Flight.model');
 let jwt=require('../utils/jwtAuth.js');
 let dbService=require('../utils/dbService.js');
 let webpush=require('../utils/webpush.js');
+const wp = require('web-push');
 
 
 
 router.get('/', (req, res)=> {
   res.json({ message: webpush.pub_key });
+});
+
+router.post('/',(req,res)=>{
+  const options = {
+    vapidDetails: {
+      subject: 'https://github.com/Raj2310/flightingPwa',
+      publicKey:  webpush.pub_key,
+      privateKey:  webpush.priv_key
+    },
+    // 1 hour in seconds.
+    TTL: 60 * 60
+  };
+
+  wp.sendNotification(
+    JSON.parse("{\"endpoint\":\"https://fcm.googleapis.com/fcm/send/eccDWP63UPw:APA91bGVLf4sP8jlP9u9RaOAXB1-cO456SsDQTpntQPzt1ljdIVS1jxanWN7BPAHi9r_qblM7HZLX2Eogb21U1U7wFOOiA_HlL6NaPV-7lSycHztwdLFaaWT9SFHV7_GSWJUTh2oG5NM\",\"keys\":{\"p256dh\":\"BKMg3eMMNiBCEnKsB9IDbzTB7Tu20kHC95wKkKJnd5CaT9CyQvoXBPIRo8jg5PlccJdZGvkHyTPxeIA_cGEo6Uo=\",\"auth\":\"RZ4wOYjsZInufejtxoTYVA==\"}}"),
+    "datdatbdatat"
+    ,options
+  )
+  .then(() => {
+    res.status(200).send({success: true});
+  })
+  .catch((err) => {
+    if (err.statusCode) {
+      res.status(err.statusCode).send(err.body);
+    } else {
+      res.status(400).send(err.message);
+    }
+  });
 });
 
 router.post('/login',(req,res)=>{
@@ -207,7 +236,7 @@ dbService.varifyAuthkey(authkey).then((userObject)=> {
     res.send(result);
   }
   });
-  //const userEmail=userObject.object.email;
+  //const userEmail=userObje  ct.object.email;
 }).catch(function(error){
  res.send({status:false,msg:"User not found"});
 });
