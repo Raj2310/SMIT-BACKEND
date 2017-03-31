@@ -3,6 +3,7 @@ let app = express(); //init Express
 let bodyParser = require('body-parser');
 let router = express.Router();
 let connection=require('./utils/dbConn.js');
+var request = require('request')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -24,7 +25,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+    if (req.query['hub.verify_token'] === '1staprilwtf') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
