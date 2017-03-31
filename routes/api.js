@@ -258,6 +258,7 @@ dbService.varifyAuthkey(authkey).then((userObject)=> {
     res.send(error);
   }
   else{
+    console.log("User subscribed");
     res.send(result);
   }
   });

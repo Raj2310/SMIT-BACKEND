@@ -8,7 +8,7 @@
 	const pub_key="BNASTKuZMTWIM7lkZ30f_R4swIttSInEwIKdIAO8rmUoz8sAg51mR4a-Qn4Jm9Fs4_qmvDbKrSPHMWKXdmdXNfs";
 	const priv_key="4OZnNldJbw-fmHFvFGgqYV7hSHFihLnj1ehP9cmDygQ";
 	exports.sendPushNotification=function(userId,msg){
-		 User.findOne({'_id':mongoose.Types.ObjectId(userId)},(err,result)=>{
+		 /*User.findOne({'_id':mongoose.Types.ObjectId(userId)},(err,result)=>{
 		    if (err) {
 		      console.log(err);
 		      res.send({status:false});
@@ -29,18 +29,18 @@
 				    options
 				  )
 				  .then(() => {
-				    res.status(200).send({success: true});
+				    console.log("success");
 				  })
 				  .catch((err) => {
 				    if (err.statusCode) {
-				      res.status(err.statusCode).send(err.body);
+				      console.log("error",err.statusCode);
 				    } else {
-				      res.status(400).send(err.message);
+				      console.log("error",err.message);
 				    }
 				  });
 			}       
-		});
-		/*const options = {
+		});*/
+		const options = {
             vapidDetails: {
               subject: 'https://github.com/Raj2310/flightingPwa',
               publicKey:  pub_key,
@@ -50,19 +50,19 @@
           };
 
           webpush.sendNotification(
-            JSON.parse("{\"endpoint\":\"https://fcm.googleapis.com/fcm/send/c48UeDnEKmU:APA91bEEZaM6djN2gG7Ki75J0FM95owHGKjH2PsaBVuZ_LrOdUqNdWgQZpNc1CjK66vk_WqKH6x3Hw8QjSx0Y6Qy5HXFXCZ4p9vI8kdPahN0QotVanlJahWQhM6xdaHDG9Eq-OvGm1Hx\",\"keys\":{\"p256dh\":\"BDaUpHNpbycurQX_I-u9MzRmwkC8Zj-KgyzAoPGopYAW_wy0c1y7A5UbcxKubyfxNCgTIi5hksZ6Gu3wKnSvJqY=\",\"auth\":\"cgmE-XWMaRVH0hC1p70c6A==\"}}"),
+            JSON.parse("{\"endpoint\":\"https://fcm.googleapis.com/fcm/send/cQjTc6o8ynA:APA91bELv3UDxMTvapOmofAYqZdhF8TRPGEFDRf094yZVUAO8oowqluYgLEMxkEMGtQg4RIdadyIlqwmE8erWggIuvEnTpac66anrmzMRTfJDX_PXIABBbPPRFGLnDMBQXQcLDwesuVR\",\"keys\":{\"p256dh\":\"BLCYJaK14baJ9lUSAro_VdeMQCXLeVKeu6DdkFUHQf-vvkFwTHoVwF-gjOzzqOrTICVHjygIPlkN0wfgtTqk0ps=\",\"auth\":\"MVodFJSip5nz12i7D5UoIg==\"}}"),
             "test 1",  
             options
           )
           .then(() => {
-            res.status(200).send({success: true});
+             console.log("success");
           })
           .catch((err) => {
-            if (err.statusCode) {
-              res.status(err.statusCode).send(err.body);
-            } else {
-              res.status(400).send(err.message);
-            }
-          });*/
+           if (err.statusCode) {
+				      console.log("error",err.statusCode);
+				    } else {
+				      console.log("error",err.message);
+				    }
+          });
 	}
 })();
