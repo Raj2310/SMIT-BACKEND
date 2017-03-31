@@ -24,24 +24,39 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+function isValidDate(date){
+    const flghtDate=new Date(date);
+    const currentDate=new Date();
+    return currentDate<flghtDate;
+}
 function varifyMessage(msg){
     const arr=msg.split("on");
     const flightNo=arr[0].trim()  ;
-    const date=arr[1];
+    const date=arr[1].trim();
+    return ((/\d{6}/.test(flightNo) && isValidDate(date)));
 }
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i]
-        sender = event.sender.id
+        event = req.body.entry[0].messaging[i];
+        sender = event.sender.id;
         if (event.message && event.message.text) {
             console.log(sender);
             text = event.message.text
-            sendTextMessage(sender, "You sender id is: " + sender.substring(0, 200))
+            if(varifyMessage(text)){
+                sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
+            }else{
+                sendTextMessage(sender, "OOPS!! You need to insert in correct format : \" flight-number on year,month,day\" "); 
+            }
+            
         }
     }
     res.sendStatus(200)
 })
+app.post('/test',(req,res)=>{
+ const msg=req.body.msg;
+ res.send(varifyMessage(msg));
+});
 
 var token = "EAARedKwegwoBAPOFQcZBshYmk1FS60zmyXxtTELhhPvYsTo6UC3dab8BSJ9HAZBH3ERnIZAM7ciVs8XFwr5SO1JaY3dlpZBRgkymLSFsrw0As6YI2X3XmZBMEXSrbStuwFrcUeORVRo1HCpVjrNBYGhpeLddEN2mjEkCd3ERJlwZDZD";
 let port = process.env.PORT || 5000;
