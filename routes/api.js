@@ -16,33 +16,58 @@ router.get('/', (req, res)=> {
 });
 
 router.post('/',(req,res)=>{
-  const options = {
-    vapidDetails: {
-      subject: 'https://github.com/Raj2310/flightingPwa',
-      publicKey:  webpush.pub_key,
-      privateKey:  webpush.priv_key
-    },
-    // 1 hour in seconds.
-    TTL: 60 * 60
-  };
+  //const subsKey=result.subscriptionKey;
+          /*const options = {
+            vapidDetails: {
+              subject: 'https://github.com/Raj2310/flightingPwa',
+              publicKey:  webpush.pub_key,
+              privateKey:  webpush.priv_key
+            },
+            TTL: 60 * 60
+          };
 
-  wp.sendNotification(
-    JSON.parse("{\"endpoint\":\"https://fcm.googleapis.com/fcm/send/eccDWP63UPw:APA91bGVLf4sP8jlP9u9RaOAXB1-cO456SsDQTpntQPzt1ljdIVS1jxanWN7BPAHi9r_qblM7HZLX2Eogb21U1U7wFOOiA_HlL6NaPV-7lSycHztwdLFaaWT9SFHV7_GSWJUTh2oG5NM\",\"keys\":{\"p256dh\":\"BKMg3eMMNiBCEnKsB9IDbzTB7Tu20kHC95wKkKJnd5CaT9CyQvoXBPIRo8jg5PlccJdZGvkHyTPxeIA_cGEo6Uo=\",\"auth\":\"RZ4wOYjsZInufejtxoTYVA==\"}}"),
-    "datdatbdatat"
-    ,options
-  )
-  .then(() => {
-    res.status(200).send({success: true});
-  })
-  .catch((err) => {
-    if (err.statusCode) {
-      res.status(err.statusCode).send(err.body);
+          wp.sendNotification(
+            JSON.parse("{\"endpoint\":\"https://fcm.googleapis.com/fcm/send/c48UeDnEKmU:APA91bEEZaM6djN2gG7Ki75J0FM95owHGKjH2PsaBVuZ_LrOdUqNdWgQZpNc1CjK66vk_WqKH6x3Hw8QjSx0Y6Qy5HXFXCZ4p9vI8kdPahN0QotVanlJahWQhM6xdaHDG9Eq-OvGm1Hx\",\"keys\":{\"p256dh\":\"BDaUpHNpbycurQX_I-u9MzRmwkC8Zj-KgyzAoPGopYAW_wy0c1y7A5UbcxKubyfxNCgTIi5hksZ6Gu3wKnSvJqY=\",\"auth\":\"cgmE-XWMaRVH0hC1p70c6A==\"}}"),
+            "test",  
+            options
+          )
+          .then(() => {
+            res.status(200).send({success: true});
+          })
+          .catch((err) => {
+            if (err.statusCode) {
+              res.status(err.statusCode).send(err.body);
+            } else {
+              res.status(400).send(err.message);
+            }
+          });*/
+          webpush.sendPushNotification();
+});
+router.post('/sendMessageToPassengers',function(req,res){
+  const f=req.body.flight;
+  const message=req.body.message;
+  Flight.findOne({flightNumber:f},(err,flight)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false});
     } else {
-      res.status(400).send(err.message);
+      const bookingpk=flight._id;
+     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk)},(err,bookings)=>{
+        if (err) {
+          console.log(err);
+          res.send({status:false});
+        } else {
+        //console.log(result);
+          bookings.forEach((bookingObject)=>{
+            webpush.sendPushNotification(bookingObject.user,message);
+            dbService.addMsgToDatabase(bookingObject._id,message);
+          });
+          res.send({status:true})
+        }
+      });
     }
   });
 });
-
 router.post('/login',(req,res)=>{
   let email=req.body.email;
   let password=req.body.password;

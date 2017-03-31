@@ -5,6 +5,7 @@
 	let Booking=require('./model/Booking.model');
 	let Flight=require('./model/Flight.model');
 	let Airport=require('./model/Airport.model');
+	let mongoose = require('mongoose');
   var exports = module.exports = {};
   exports.varifyAuthkey = (authkey)=>{
 	 return new Promise((resolve,reject)=>{
@@ -84,6 +85,16 @@
                 }
         });
     });
+  };
+  exports.addMsgToDatabase=(bookingId,message)=>{
+  		Booking.findOneAndUpdate({_id: mongoose.Types.ObjectId(bookingId)}, {$push: {msg: message}},(err,result)=>{
+  			if(err){
+    			console.log(err);
+  			}
+  			else{
+    			console.log(result);
+  			}
+		});
   };
   exports.getBookingForUser=(userid)=>{
   	return new Promise((resolve,reject)=>{
