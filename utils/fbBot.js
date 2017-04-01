@@ -20,10 +20,10 @@ exports.handleWebhook=function(req,res){
 }
 
 exports.sendMessage=(f,d,m,y,msg)=>{
-    /*FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{
+    FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{
         if(err){
-        }else if(result){*/
+        }else if(result){
             services.sendTextMessage(senderId, msg);
-    /*    }
-    });*/
+        }
+    });
 }
