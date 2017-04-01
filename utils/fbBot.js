@@ -25,7 +25,7 @@ exports.sendMessage=(f,d,m,y,bookingObject,msg)=>{
     /*FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{
         if(err){
         }else if(result){*/
-            services.sendTextMessage(senderId, msg);
+            services.sendTextMessage(senderId, "msg");
     /*    }
     });*/
 }
