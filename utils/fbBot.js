@@ -19,7 +19,10 @@ exports.handleWebhook=function(req,res){
     }
     res.sendStatus(200)
 }
-exports.sendMessage=(bookingObject)=>{
-    console.log("bhusdvdijsvkosvkfsnvjifsnvijfsvnjf",bookingObject);
-    services.sendTextMessage(senderId, "bookingObject");
+exports.sendMessage=(bookingObject,message)=>{
+//var  messege=bookingObject.msg.slice(-1)[0]
+    if(messege){
+         services.sendTextMessage(senderId, messege);
+    }
+   
 }
