@@ -53,14 +53,14 @@ const parseTheDate=(datestring)=>{
               const day=dateObj.getDate();
               const month=dateObj.getMonth()+1;
               const year=dateObj.getFullYear();
-              return flightNo.trim()+" "+day+" "+month+" "+year;
-              /*dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
+              //return flightNo.trim()+" "+day+" "+month+" "+year;
+              dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
 
                   return "You are Subscribed to recieve Updates\n"+bookingObject.msg[bookingObject.msg.length-1];
               },(error)=>{
                 console.log(error);
                   return "Sorry No flight found";
-              });*/
+              });
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
