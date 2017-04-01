@@ -44,14 +44,14 @@
         if (subscriptionmsg) {
           const flightNo=((subscriptionmsg.split("on"))[0]).trim();
           const date=((message.split("on"))[1]).trim();
-          if(flightNo && date){
+          if(flightNo && date && isValidDate(date)){
               return "Flight No "+flightNo+" date"+date;
           }else{
-               return declineArr[Math.round(Math.random() * declineArr.length - 1)];
+               return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
         }
         else{
-            return declineArr[Math.round(Math.random() * declineArr.length-1)];
+            return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
         }
     }else if(/noti/.test(message) && /past/.test(message)){
       return `1.<Notification #1>
@@ -64,7 +64,7 @@
         if (subscriptionmsg) {
           const flightNo=((message.split("on"))[0]).trim();
           const date=((message.split("on"))[1]).trim();
-          if(flightNo && date){
+          if(flightNo && date  && isValidDate(date)){
               return "Sure! I am just a call away";
           }else{
               return declineArr[Math.round(Math.random() * declineArr.length -1)];
