@@ -4,6 +4,7 @@ let bodyParser = require('body-parser');
 let router = express.Router();
 let connection=require('./utils/dbConn.js');
 var fbBot=require('./utils/fbBot');
+var services=require('./utils/services');
 var request = require('request')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,7 +27,10 @@ app.use(function (req, res, next) {
     next();
 });
 app.post('/webhook',fbBot.handleWebhook);
-
+app.get('/test/:msg',(req,res)=>{
+    const msg=req.params.msg;
+    res.send(services.varifyMessage(msg));
+})
 let port = process.env.PORT || 5000;
 //init Express Router
 connection.connect();

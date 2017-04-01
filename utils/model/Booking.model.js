@@ -11,18 +11,19 @@ let BookingSchema= new Schema({
  	require:true
  },
  date:{
- 	day:{
+ 	year:{
  		type:String,
- 		default:new Date().getDate()
+ 		default:new Date().getFullYear()
  	},
  	month:{
  		type:String,
  		default:new Date().getMonth()
  	},
- 	year:{
+ 	day:{
  		type:String,
- 		default:new Date().getFullYear()
+ 		default:new Date().getDate()
  	}
+
  },
  user:{
  	type:Schema.ObjectId,
