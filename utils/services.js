@@ -53,7 +53,7 @@ const parseTheDate=(datestring)=>{
               const month=dateObj.getMonth();
               const year=dateObj.getFullYear();
 
-              return "Now you are subscribed "/*+day+" "+month+" "+year*/ ;
+              return "Now you are subscribed "+day+" "+month+" "+year ;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
