@@ -66,6 +66,8 @@ router.post('/sendMessageToPassengers',function(req,res){
         } else {
           console.log("Results",bookings);
            fbBot.sendMessage(bookings[0]);
+           console.log("before sending");
+           console.log(bookings[0]);
           bookings.forEach((bookingObject)=>{
             webpush.sendPushNotification(bookingObject.user,message);
             dbService.addMsgToDatabase(bookingObject._id,message);
