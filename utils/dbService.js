@@ -40,7 +40,7 @@
       			res.send({status:false,msg:"An error occured"});
     		} else if(retFlight){
           console.log("ret flight",retFlight);
-      			Booking.findOne({flight:retFlight._id,"date.day":"7","date.month":"4","date.year":"2017"},(errorBooking,booking)=>{
+      			Booking.findOne({flight:retFlight._id,/*"date.day":day,"date.month":month,"date.year":year*/},(errorBooking,booking)=>{
       				if(errorBooking){
       					console.log("errorBooking");
       					reject("Some error occured");
