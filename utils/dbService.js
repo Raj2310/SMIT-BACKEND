@@ -34,7 +34,7 @@
   exports.getByFlightNo=(flightNo,day,month,year)=>{
   	return new Promise((resolve,reject)=>{
       console.log("Flight number recieved",flightNo);
-  		Flight.findOne({flightNumber:flightNo},(err,retFlight)=>{
+  		Flight.findOne({flightNumber:flightNo.trim()},(err,retFlight)=>{
     		if (err) {
       			console.log(err);
       			res.send({status:false,msg:"An error occured"});
