@@ -42,9 +42,9 @@ const parseTheDate=(datestring)=>{
  let message=msg.toLowerCase();
     if ((/hi/.test(message) || /hello/.test(message) || /hey/.test(message)  || /hya/.test(message))) {
         return `Hey there, I am here to help you manage your flights over a cup of coffee..!
-                 Here is how I can help
-                1. Subscribe me to <filght id> on <date>
-                2. Mute <flight id> on <yyyy,mm,dd>`;
+Here is how I can help
+1. Subscribe me to <filght id> on <date>
+2. Mute <flight id> on <yyyy,mm,dd>`;
     } else if(/subscribe/.test(message)){
         const subscriptionmsg=(message.split("to"))[1];
         if (subscriptionmsg) {
