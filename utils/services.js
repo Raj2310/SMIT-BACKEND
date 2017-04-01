@@ -1,5 +1,4 @@
-(function()
-{
+(function(){
   //facebook token
 	var token = "EAARedKwegwoBAPOFQcZBshYmk1FS60zmyXxtTELhhPvYsTo6UC3dab8BSJ9HAZBH3ERnIZAM7ciVs8XFwr5SO1JaY3dlpZBRgkymLSFsrw0As6YI2X3XmZBMEXSrbStuwFrcUeORVRo1HCpVjrNBYGhpeLddEN2mjEkCd3ERJlwZDZD";
 	var request = require('request')
@@ -29,6 +28,52 @@
 		const flghtDate=new Date(date);
     	return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
 	}
+  exports.getMessageType=(msg)=>{
+ let message=msg.toLowerCase();
+    if ((/hi/.test(message) || /hello/.test(message) || /hey/.test(message)  || /hya/.test(message)) && /flybot/.test(message)) {
+        return `Hey there, I am here to help you manage your flights over a cup of coffee..!
+                 Here is how I can help
+                1. Subscribe me to <filght id> on <date>
+                2. Mute <flight id> on <yyyy,mm,dd>`;
+    } else if(/subscribe/.test(message)){
+        const subscriptionmsg=(message.split("to"))[1];
+        if (subscriptionmsg) {
+          const flightNo=((message.split("on"))[0]).trim();
+          const date=((message.split("on"))[1]).trim();
+          if(flightNo && date){
+              return "Hey Your flight has been delayed";
+          }else{
+              return "Bujhte parlem naa";
+          }
+        }
+        else{
+           return "Bujhte parlem naa";
+        }
+    }else if(/noti/.test(message) && /past/.test()){
+      return `1.<Notification #1>
+                      2.<Notification #2>
+                      3.<Notification #3>
+                      4.<Notification #4>
+                      5.<Notification #5>`;
+    }else if(/mute/.test(message)){
+        const subscriptionmsg=(message.split("to"))[1];
+        if (subscriptionmsg) {
+          const flightNo=((message.split("on"))[0]).trim();
+          const date=((message.split("on"))[1]).trim();
+          if(flightNo && date){
+              return "Sure! I am just a call away";
+          }else{
+              return "Bujhte parlem naa";
+          }
+        }
+        else{
+           return "Bujhte parlem naa";
+        }
+    }else{
+       return "Bujhte parlem naa";
+    }
+  }
+
   exports.varifyMessage=(msg)=>{
     const arr=msg.split("on");
     if(arr.length===2){
