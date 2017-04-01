@@ -33,6 +33,7 @@
   } 
   exports.getByFlightNo=(flightNo,day,month,year)=>{
   	return new Promise((resolve,reject)=>{
+      console.log("Flight number recieved",month);
   		Flight.findOne({flightNumber:flightNo},(err,retFlight)=>{
     		if (err) {
       			console.log(err);
@@ -40,17 +41,19 @@
     		} else if(retFlight){
       			Booking.findOne({flight:retFlight._id,"date.day":day,"date.month":month,"date.year":year},(errorBooking,booking)=>{
       				if(errorBooking){
-      					console.log(errorBooking);
+      					console.log("errorBooking");
       					reject("Some error occured");
       				}else{
       					if(booking){
       						resolve(booking);
       					}else{
+                  console.log("booking not found");
       						reject("No booking found");
       					}
       				}
       			});
     		}else{
+            console.log("Flight not found");
        			reject({status:false,msg:"Flight not found"});
     		}
   		});

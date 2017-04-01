@@ -12,11 +12,14 @@ const wp = require('web-push');
 let fbBot=require('../utils/fbBot.js');;
 
 
-/*
-router.post('/',(req,res)=>{
 
-          webpush.sendPushNotification();
-});*/
+router.post('/test',(req,res)=>{
+  dbService.getByFlightNo(req.body.f,req.body.d,req.body.m,req.body.y).then((booking)=>{
+    res.send(booking);
+  },(error)=>{
+    res.send("ss");
+  })
+});
 router.post('/sendMessageToPassengers',function(req,res){
   const f=req.body.flight;
   const message=req.body.message;
