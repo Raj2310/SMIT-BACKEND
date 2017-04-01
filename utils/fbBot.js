@@ -31,6 +31,7 @@ exports.unsubscribe=(f,d,m,y)=>{
 }
 exports.sendTopFiveNotification=()=>{
     FbSubs.find({}).limit(5).exec(function(err, flights) {
+        console.log("fghjkmjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",flights);
         dbService.getByFlightNo(flights.flightNo,flights.day,flights.month,flights.year).then((booking)=>{
             console.log("Booking object from Inside",booking.msg);
               var messages=booking.msg;
