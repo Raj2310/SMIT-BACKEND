@@ -74,6 +74,19 @@ router.post('/sendMessageToPassengers',function(req,res){
     }
   });
 });
+
+router.post('/getFlightInfo',(req,res)=>{
+  const flightNo=req.body.flightNo;
+  const date=req.body.date;
+  const flightdate= new Date(date);
+  dbService.getByFlightNo(flightNo,flightdate.getDate(),flightdate.getMonth()+1,flightdate.getFullYear()).then((booking)=>{
+    res.send(booking)
+  },(error)=>{
+    res.send({status:false,msg:"No booking found for this flight"});
+  }
+
+  )
+})
 /*
 router.post('/sendMessageToPassengers1',function(req,res)=<{
   const f=req.body.flight;

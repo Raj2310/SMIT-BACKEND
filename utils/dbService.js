@@ -14,14 +14,48 @@
   				reject("Some Error occured");
   			}else{
   				if(booking){
-  					resolve(booking);
+  					console.log("booking",booking);
+  					return(getFlightInfoForBooking(booking));
   				}else{
+
   					reject("No booking found");
   				}
   			}
+  		},(error)=>{
+  			console.log("vjinvfsv");
+  			reject("No booking found");
+  		}
+  		).then((bookingObj)=>{
+  			console.log(bookingObj);
+  				resolve(booking);
   		});
   	});
-  }
+  } 
+  exports.getByFlightNo=(flightNo,day,month,year)=>{
+  	return new Promise((resolve,reject)=>{
+  		Flight.findOne({flightNumber:flightNo},(err,retFlight)=>{
+    		if (err) {
+      			console.log(err);
+      			res.send({status:false,msg:"An error occured"});
+    		} else if(retFlight){
+      			Booking.findOne({flight:retFlight._id,"date.day":day,"date.month":month,"date.year":year},(errorBooking,booking)=>{
+      				if(errorBooking){
+      					console.log(errorBooking);
+      					reject("Some error occured");
+      				}else{
+      					if(booking){
+      						resolve(booking);
+      					}else{
+      						reject("No booking found");
+      					}
+      				}
+      			});
+    		}else{
+       			res.send({status:false,msg:"Flight not found"});
+    		}
+  		});
+  	})
+  };
 
   exports.varifyAuthkey = (authkey)=>{
 	 return new Promise((resolve,reject)=>{
@@ -54,11 +88,14 @@
   }
   getFlightInfoForBooking=(bookingObj)=>{
   	return new Promise((resolve,reject)=>{
+  		console.log("booking recieved",bookingObj.flight);
   		Flight.findOne({_id:bookingObj.flight},(errFlight,flight)=>{
                 if (errFlight) {
                 	reject({status:false,msg:"Error occured Flight not found"});
                 } else {
+
                 	var obj=bookingObj.toObject();
+                	console.log("FLight Info",flight);
                 	obj.flightNo=flight.flightNumber;
                 	obj.source=flight.source;
                 	obj.destination=flight.destination;
