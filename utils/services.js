@@ -24,7 +24,7 @@
     const currentDate=new Date();
     return currentDate<flghtDate;
 }
-	exports.parseTheDate(datestring)=>{
+	exports.parseTheDate=(datestring)=>{
 		const flghtDate=new Date(date);
     	return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
 	}

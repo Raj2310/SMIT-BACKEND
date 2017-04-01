@@ -7,6 +7,22 @@
 	let Airport=require('./model/Airport.model');
 	let mongoose = require('mongoose');
   var exports = module.exports = {};
+  exports.getByBookingId=(bookingId)=>{
+  	return new Promise((resolve,reject)=>{
+  		Booking.findOne({_id:bookingId},(err,booking)=>{
+  			if(err){
+  				reject("Some Error occured");
+  			}else{
+  				if(booking){
+  					resolve(booking);
+  				}else{
+  					reject("No booking found");
+  				}
+  			}
+  		});
+  	});
+  }
+
   exports.varifyAuthkey = (authkey)=>{
 	 return new Promise((resolve,reject)=>{
 	 	const user=jwt.varifyToken(authkey);
@@ -92,7 +108,7 @@
     			console.log(err);
   			}
   			else{
-    			console.log(result);
+    			//console.log(result);
   			}
 		});
   };

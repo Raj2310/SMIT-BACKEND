@@ -6,6 +6,7 @@ let Booking=require('../utils/model/Booking.model');
 let Flight=require('../utils/model/Flight.model');
 let jwt=require('../utils/jwtAuth.js');
 let dbService=require('../utils/dbService.js');
+let services=require('../utils/services.js');
 let webpush=require('../utils/webpush.js');
 const wp = require('web-push');
 
@@ -46,18 +47,23 @@ router.post('/',(req,res)=>{
 router.post('/sendMessageToPassengers',function(req,res){
   const f=req.body.flight;
   const message=req.body.message;
+  const date=new Date(req.body.date);
+  console.log("DAY",date.getDate());
+   console.log("MONTH",(date.getMonth())+1);
+    console.log("YEAR",date.getFullYear());
+  console.log(date);
   Flight.findOne({flightNumber:f},(err,flight)=>{
     if (err) {
       console.log(err);
       res.send({status:false});
     } else {
       const bookingpk=flight._id;
-     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk)},(err,bookings)=>{
+     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk),"date.day":date.getDate(),"date.month":date.getMonth()+1,"date.year":date.getFullYear()},(err,bookings)=>{
         if (err) {
           console.log(err);
           res.send({status:false});
         } else {
-        //console.log(result);
+          console.log("Results",bookings);
           bookings.forEach((bookingObject)=>{
             webpush.sendPushNotification(bookingObject.user,message);
             dbService.addMsgToDatabase(bookingObject._id,message);
@@ -68,18 +74,19 @@ router.post('/sendMessageToPassengers',function(req,res){
     }
   });
 });
-
-/*router.post('/sendMessageToPassengers1',function(req,res)=<{
+/*
+router.post('/sendMessageToPassengers1',function(req,res)=<{
   const f=req.body.flight;
   const message=req.body.message;
-  //const date=req.body.date;
+  const date=req.body.date;
+  const dateObj:services.parseTheDate(date);
   Flight.findOne({flightNumber:f},(err,flight)=>{
     if (err) {
       console.log(err);
       res.send({status:false});
     } else {
       const bookingpk=flight._id;
-     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk)},(err,bookings)=>{
+     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk),dateObj:{day:""}},(err,bookings)=>{
         if (err) {
           console.log(err);
           res.send({status:false});
@@ -96,6 +103,19 @@ router.post('/sendMessageToPassengers',function(req,res){
   });
 });
 */
+router.get('/findByBid/:bookingId',(req,res)=>{
+  const bookingId=mongoose.Types.ObjectId(req.params.bookingId);
+ dbService.getByBookingId(bookingId).then((booking)=>{
+  if(booking){
+    res.send(booking);
+  }else{
+  res.send({status:false,msg:"Sorry No User found"});
+  }
+ },(err)=>{
+  res.send({status:false,msg:"Sorry No User found"});
+ })
+});
+
 router.post('/login',(req,res)=>{
   let email=req.body.email;
   let password=req.body.password;
@@ -329,8 +349,13 @@ router.get('/bookTicket/:flight/:user',(req,res)=>{
           console.log(err1);
            res.send({status:false,msg:"An error occured"});
         }else if(user){
-           const today=Date.now();
-            const bookingObj= new Booking({user:user._id,flight:flight._id,date:Date.now()});
+           const today=new Date();
+           const dateObj={
+            day:Number(today.getDate())+Math.ceil(services.getRandomArbitrary(1,10)),
+            month:today.getMonth(),
+            year:today.getFullYear()
+           };
+            const bookingObj= new Booking({user:user._id,flight:flight._id,date:dateObj});
             bookingObj.save((err2,booking)=>{
               if(err2){
                 console.log(err2);
