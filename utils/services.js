@@ -4,6 +4,7 @@
 	var request = require('request')
 	let fs = require('fs');
   let dbService=require('./dbService');
+  let FbSubs=require('./model/FbSubs');
   var exports = module.exports = {};
   exports.readFile = (filename)=>{
 	 return new Promise((resolve,reject)=>{
@@ -50,18 +51,15 @@ const parseTheDate=(datestring)=>{
           const date=((subscriptionmsg.split("on"))[1]);
           if(flightNo && date){
               const dateObj=new Date(date.trim());
-              const day=dateObj.getDate();
-              const month=dateObj.getMonth()+1;
-              const year=dateObj.getFullYear();
-              //return flightNo.trim()+" "+day+" "+month+" "+year;
-              dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
-                  console.error("here",bookingObject);
-                  return "You are Subscribed to recieve Updates\n"+bookingObject.msg[bookingObject.msg.length-1];
-              },(error)=>{
-                console.log(error);
-                console.error("here1",error);
-                  return "Sorry No flight found";
+              const _day=dateObj.getDate();
+              const _month=dateObj.getMonth()+1;
+              const _year=dateObj.getFullYear();
+              const fbs=new FbSubs({flightNo:flightNo.trim(),day:_day,month:_month,year:_year});
+              fbs.save((err,result)=>{
+
               });
+              return "You are subscribed to recieve notification";
+
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
