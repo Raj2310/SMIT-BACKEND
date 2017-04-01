@@ -48,7 +48,7 @@ const parseTheDate=(datestring)=>{
           const flightNo=((subscriptionmsg.split("on"))[0]);
           const date=((subscriptionmsg.split("on"))[1]);
           if(flightNo && date && isValidDate(date)){
-              const dateObj=new date(date.trim());
+              const dateObj=new Date(date.trim());
               const day=dateObj.getDay();
               const month=dateObj.getMonth();
               const year=dateObj.getFullYear();
