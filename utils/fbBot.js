@@ -34,7 +34,7 @@ exports.sendFirstMessage=(f,d,m,y)=>{
         console.log("Booking object from Inside",booking.msg);
           var messages=booking.msg;
         if(messages && messages.length>0){
-            services.sendTextMessage(senderId, "messages[messages.length-1]");
+            services.sendTextMessage(senderId, messages[0]);
         }
     },(err)=>{
 console.log("Booking object from error",booking);
