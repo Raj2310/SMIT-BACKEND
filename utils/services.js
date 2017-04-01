@@ -34,7 +34,7 @@
         return false;
     }
   }
-function sendTextMessage(sender, text) {
+	exports.sendTextMessage(sender, text) {
     messageData = {
         text:text
     }
