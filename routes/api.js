@@ -68,6 +68,11 @@ router.post('/sendMessageToPassengers',function(req,res){
     }
   });
 });
+
+/*router.post('/sendMessageToPassengers1',function(req,res)=<{
+
+});*/
+
 router.post('/login',(req,res)=>{
   let email=req.body.email;
   let password=req.body.password;
