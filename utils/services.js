@@ -41,7 +41,7 @@
     } else if(/subscribe/.test(message)){
         const subscriptionmsg=(message.split("to"))[1];
         if (subscriptionmsg) {
-          const flightNo=((message.split("on"))[0]).trim();
+          const flightNo=((subscriptionmsg.split("on"))[0]).trim();
           const date=((message.split("on"))[1]).trim();
           if(flightNo && date){
               return "Flight No "+flightNo+" date"+date;
