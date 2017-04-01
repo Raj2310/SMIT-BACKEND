@@ -33,7 +33,7 @@
   } 
   exports.getByFlightNo=(flightNo,day,month,year)=>{
   	return new Promise((resolve,reject)=>{
-      console.log("Flight number recieved",flightNo);
+      console.log("Flight number recieved",flightNo+" "+day+" "+" "+month+" "+year);
   		Flight.findOne({flightNumber:flightNo.trim()},(err,retFlight)=>{
     		if (err) {
       			console.log(err);
