@@ -24,6 +24,10 @@
     const currentDate=new Date();
     return currentDate<flghtDate;
 }
+const parseTheDate=(datestring)=>{
+    const flghtDate=new Date(date);
+      return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
+  }
 	exports.parseTheDate=(datestring)=>{
 		const flghtDate=new Date(date);
     	return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
@@ -40,12 +44,12 @@
                 2. Mute <flight id> on <yyyy,mm,dd>`;
     } else if(/subscribe/.test(message)){
         const subscriptionmsg=(message.split("to"))[1];
-        const restflightmsg=(message.split("to"))[0];
         if (subscriptionmsg) {
           const flightNo=((subscriptionmsg.split("on"))[0]);
-          const date=((message.split("on"))[1]);
+          const date=((subscriptionmsg.split("on"))[1]);
           if(flightNo && date && isValidDate(date)){
-              return "Flight No "+flightNo.trim()+" date"+date;
+            const dateObj=parseTheDate(date);
+              return "Flight No "+flightNo.trim()+" day: "+dateObj.dat+" month: "dateObj.month+" Year: "+dateObj.year;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
