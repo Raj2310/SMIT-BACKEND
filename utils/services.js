@@ -48,8 +48,8 @@ const parseTheDate=(datestring)=>{
           const flightNo=((subscriptionmsg.split("on"))[0]);
           const date=((subscriptionmsg.split("on"))[1]);
           if(flightNo && date && isValidDate(date)){
-            const dateObj=parseTheDate(date);
-              return "Flight No "+flightNo.trim()+" day: "+dateObj.dat+" month: "dateObj.month+" Year: "+dateObj.year;
+
+              return "Flight No "+flightNo.trim()+" date :"+date ;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
