@@ -32,8 +32,9 @@ exports.unsubscribe=(f,d,m,y)=>{
 exports.sendFirstMessage=(f,d,m,y)=>{
     dbService.getByFlightNo(f,d,m,y).then((booking)=>{
         console.log("Booking object from Inside",booking);
+          var messages=booking.msg;
         services.sendTextMessage(senderId, messages[messages.length-1]);
-        var messages=booking.msg;
+      
         if(messages && messages.length>0){
             services.sendTextMessage(senderId, messages[messages.length-1]);
         }
