@@ -1,7 +1,7 @@
 var exports = module.exports = {};
 var services=require('./services.js');
 let bodyParser = require('body-parser');
-
+const senderId="1305427642879751";
 exports.handleWebhook=function(req,res){
    messaging_events = req.body.entry[0].messaging
     for (i = 0; i < messaging_events.length; i++) {
@@ -19,4 +19,6 @@ exports.handleWebhook=function(req,res){
     }
     res.sendStatus(200)
 }
-
+exports.sendMessage=(bookingObject)=>{
+    services.sendTextMessage(senderId, bookingObject.msg[bookingObject.msg.length-1]);
+}

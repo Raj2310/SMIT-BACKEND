@@ -9,6 +9,7 @@ let dbService=require('../utils/dbService.js');
 let services=require('../utils/services.js');
 let webpush=require('../utils/webpush.js');
 const wp = require('web-push');
+let fbBot=require('../utils/fbBot.js');;
 
 
 
@@ -64,6 +65,7 @@ router.post('/sendMessageToPassengers',function(req,res){
           res.send({status:false});
         } else {
           console.log("Results",bookings);
+           fbBot.sendMessage(bookings[0]);
           bookings.forEach((bookingObject)=>{
             webpush.sendPushNotification(bookingObject.user,message);
             dbService.addMsgToDatabase(bookingObject._id,message);
