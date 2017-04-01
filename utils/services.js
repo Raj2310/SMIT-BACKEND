@@ -55,10 +55,11 @@ const parseTheDate=(datestring)=>{
               const year=dateObj.getFullYear();
               //return flightNo.trim()+" "+day+" "+month+" "+year;
               dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
-
+                  console.error("here",bookingObject);
                   return "You are Subscribed to recieve Updates\n"+bookingObject.msg[bookingObject.msg.length-1];
               },(error)=>{
                 console.log(error);
+                console.error("here1",error);
                   return "Sorry No flight found";
               });
           }else{
