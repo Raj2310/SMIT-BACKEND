@@ -31,9 +31,14 @@ function isValidDate(date){
 }
 function varifyMessage(msg){
     const arr=msg.split("on");
-    const flightNo=arr[0].trim()  ;
-    const date=arr[1].trim();
-    return ((/\d{6}/.test(flightNo) && isValidDate(date)));
+    if(arr.length===2){
+        const flightNo=arr[0].trim();
+        const date=arr[1].trim();
+        return ((/\d{6}/.test(flightNo) && isValidDate(date)));
+    }else{
+        return false;
+    }
+
 }
 app.post('/webhook/', function (req, res) {
     messaging_events = req.body.entry[0].messaging
