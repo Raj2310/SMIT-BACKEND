@@ -19,11 +19,11 @@ exports.handleWebhook=function(req,res){
     }
     res.sendStatus(200)
 }
-exports.sendMessage=(bookingObject,message)=>{
-//var  messege=bookingObject.msg.slice(-1)[0]
-   /* if(messege){
-        console.log("message Recieved ",message);
-         services.sendTextMessage(senderId, messege);
-    }*/
+exports.sendMessage=(bookingObject,msg)=>{
+/*var  messege=bookingObject.msg.slice(-1)[0];
+console.log(message);*/
+    if(msg){
+         services.sendTextMessage(senderId, msg);
+    }
    
 }
