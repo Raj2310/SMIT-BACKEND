@@ -53,7 +53,7 @@ const parseTheDate=(datestring)=>{
               const day=dateObj.getDate();
               const month=dateObj.getMonth()+1;
               const year=dateObj.getFullYear();
-              return flightNo+" "+day+" "+month+" "+year;
+              return flightNo.trim()+" "+day+" "+month+" "+year;
               /*dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
 
                   return "You are Subscribed to recieve Updates\n"+bookingObject.msg[bookingObject.msg.length-1];
