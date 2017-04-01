@@ -42,10 +42,10 @@
         const subscriptionmsg=(message.split("to"))[1];
         const restflightmsg=(message.split("to"))[0];
         if (subscriptionmsg) {
-          const flightNo=((subscriptionmsg.split("on"))[0]).trim();
+          const flightNo=((subscriptionmsg.split("on"))[0]);
           const date=((message.split("on"))[1]).trim();
           if(flightNo && date && isValidDate(date)){
-              return "Flight No "+flightNo+" date"+date;
+              return "Flight No "+flightNo.trim()+" date"+date;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
