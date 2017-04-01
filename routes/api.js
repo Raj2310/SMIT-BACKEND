@@ -64,7 +64,7 @@ router.post('/sendMessageToPassengers',function(req,res){
           console.log(err);
           res.send({status:false});
         } else {
-          console.log("Results",bookings);
+          console.log("Results",message);
            fbBot.sendMessage(bookings[0],message);
            console.log("before sending");
            console.log(bookings[0]);

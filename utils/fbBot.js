@@ -21,8 +21,9 @@ exports.handleWebhook=function(req,res){
 }
 exports.sendMessage=(bookingObject,message)=>{
 //var  messege=bookingObject.msg.slice(-1)[0]
-    if(messege){
+   /* if(messege){
+        console.log("message Recieved ",message);
          services.sendTextMessage(senderId, messege);
-    }
+    }*/
    
 }
