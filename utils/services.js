@@ -58,7 +58,7 @@ const parseTheDate=(datestring)=>{
               },(error)=>{
                 console.log(error);
                   return "Sorry No flight found";
-              }
+              });
               return "Now you are subscribed "+day+" "+month+" "+year ;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
