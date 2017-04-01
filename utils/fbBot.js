@@ -9,12 +9,13 @@ exports.handleWebhook=function(req,res){
         sender = event.sender.id;
         if (event.message && event.message.text) {
             console.log(sender);
-            text = event.message.text
-            if(services.varifyMessage(text)){
+            text = event.message.text;
+            services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
+            /*if(services.varifyMessage(text)){
                 services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
             }else{
                 services.sendTextMessage(sender, "OOPS!! You need to insert in correct format : \" flight-number on year,month,day\" "); 
-            }     
+            }  */   
         }
     }
     res.sendStatus(200)
