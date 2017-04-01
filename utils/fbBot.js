@@ -36,7 +36,7 @@ exports.sendTopFiveNotification=()=>{
                 console.log("Booking object from Inside",booking.msg);
                   var messages=booking.msg;
                 if(messages && messages.length>0){
-                    services.sendTextMessage(senderId, "Flight Number: "+f+"\n"+messages[messages.length-1]);
+                    services.sendTextMessage(senderId, "Flight Number: "+flight.flightNo+"\n"+messages[messages.length-1]);
                 }
             });
         })
