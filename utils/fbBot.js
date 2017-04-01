@@ -20,5 +20,6 @@ exports.handleWebhook=function(req,res){
     res.sendStatus(200)
 }
 exports.sendMessage=(bookingObject)=>{
-    services.sendTextMessage(senderId, bookingObject.msg[0];
+    console.log("bhusdvdijsvkosvkfsnvjifsnvijfsvnjf",bookingObject);
+    services.sendTextMessage(senderId, bookingObject.msg[0]);
 }
