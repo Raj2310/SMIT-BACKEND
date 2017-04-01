@@ -1,5 +1,6 @@
 var exports = module.exports = {};
 var services=require('./services.js');
+var dbService=require('./dbService.js');
 let bodyParser = require('body-parser');
 const senderId="1305427642879751";
 let FbSubs=require('./model/FbSubs');
@@ -27,6 +28,16 @@ exports.unsubscribe=(f,d,m,y)=>{
         else{
         }
     });
+}
+exports.sendFirstMessage=(f,d,m,y)=>{
+    dbService.getByFlightNo(f,d,m,y).then((booking)=>{
+        var messages=booking.msg;
+        if(messages && messages.length>0){
+            services.sendTextMessage(senderId, messages[messages.length-1]);
+        }
+    },(err)=>{
+
+    })
 }
 exports.sendMessage=(f,d,m,y,msg)=>{
     FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{

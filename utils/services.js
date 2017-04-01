@@ -59,6 +59,7 @@ const parseTheDate=(datestring)=>{
               fbs.save((err,result)=>{
 
               });
+              fbBot.sendFirstMessage(flightNo,_day,_month,_year);
               return "You are subscribed to recieve notification";
 
           }else{
