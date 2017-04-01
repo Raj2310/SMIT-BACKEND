@@ -19,7 +19,7 @@
   exports.getRandomArbitrary=(min, max)=> {
   return Math.random() * (max - min) + min;
 	}
-  exports.isValidDate=(date)=>{
+  function isValidDate=(date)=>{
     const flghtDate=new Date(date);
     const currentDate=new Date();
     return currentDate<flghtDate;
@@ -34,7 +34,7 @@
         return false;
     }
   }
-	exports.sendTextMessage(sender, text) {
+  exports.sendTextMessage=(sender, text)=> {
     messageData = {
         text:text
     }
