@@ -43,7 +43,7 @@
         const restflightmsg=(message.split("to"))[0];
         if (subscriptionmsg) {
           const flightNo=((subscriptionmsg.split("on"))[0]);
-          const date=((message.split("on"))[1]).trim();
+          const date=((message.split("on"))[1]);
           if(flightNo && date && isValidDate(date)){
               return "Flight No "+flightNo.trim()+" date"+date;
           }else{
