@@ -12,10 +12,6 @@ const wp = require('web-push');
 let fbBot=require('../utils/fbBot.js');;
 
 
-router.get('/test', (req, res)=> {
-  
-  res.json(jwt.generateToken({bookings:[]}));
-});
 /*
 router.post('/',(req,res)=>{
 
@@ -41,7 +37,7 @@ router.post('/sendMessageToPassengers',function(req,res){
           res.send({status:false});
         } else {
           console.log("Results",message);
-           fbBot.sendMessage(bookings[0],message);
+           fbBot.sendMessage(f,date.getDate(),date.getMonth()+1,date.getFullYear(),message);
            console.log("before sending");
            console.log(bookings[0]);
           bookings.forEach((bookingObject)=>{
