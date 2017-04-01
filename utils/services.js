@@ -19,7 +19,7 @@
   exports.getRandomArbitrary=(min, max)=> {
   return Math.random() * (max - min) + min;
 	}
-  function isValidDate=(date)=>{
+  const isValidDate=(date)=>{
     const flghtDate=new Date(date);
     const currentDate=new Date();
     return currentDate<flghtDate;
