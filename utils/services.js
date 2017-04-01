@@ -51,7 +51,7 @@ const parseTheDate=(datestring)=>{
           if(flightNo && date && isValidDate(date)){
               const dateObj=new Date(date.trim());
               const day=dateObj.getDate();
-              const month=dateObj.getMonth();
+              const month=dateObj.getMonth()+1;
               const year=dateObj.getFullYear();
               dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
 
