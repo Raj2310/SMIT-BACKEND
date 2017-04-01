@@ -33,10 +33,8 @@ exports.sendFirstMessage=(f,d,m,y)=>{
     dbService.getByFlightNo(f,d,m,y).then((booking)=>{
         console.log("Booking object from Inside",booking);
           var messages=booking.msg;
-        services.sendTextMessage(senderId, messages[messages.length-1]);
-      
         if(messages && messages.length>0){
-            services.sendTextMessage(senderId, messages[messages.length-1]);
+            services.sendTextMessage(senderId, "messages[messages.length-1]");
         }
     },(err)=>{
 console.log("Booking object from error",booking);
