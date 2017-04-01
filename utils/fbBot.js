@@ -18,7 +18,16 @@ exports.handleWebhook=function(req,res){
     }
     res.sendStatus(200)
 }
-
+exports.unsubscribe=(f,d,m,y)=>{
+     FbSubs.remove({flightNo:f,day:d,month:m,year:y},(err,result)=>{
+        if(err){
+        }else if(result){
+            
+        }
+        else{
+        }
+    });
+}
 exports.sendMessage=(f,d,m,y,msg)=>{
     FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{
         if(err){
@@ -26,7 +35,6 @@ exports.sendMessage=(f,d,m,y,msg)=>{
             services.sendTextMessage(senderId, msg);
         }
         else{
-             services.sendTextMessage(senderId, "msg");
         }
     });
 }

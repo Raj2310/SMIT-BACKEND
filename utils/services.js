@@ -4,6 +4,7 @@
 	var request = require('request')
 	let fs = require('fs');
   let dbService=require('./dbService');
+  let fbBot=require('./fbBot');
   let FbSubs=require('./model/FbSubs');
   var exports = module.exports = {};
   exports.readFile = (filename)=>{
@@ -76,9 +77,14 @@ const parseTheDate=(datestring)=>{
     }else if(/mute/.test(message)){
         const subscriptionmsg=(message.split("to"))[1];
         if (subscriptionmsg) {
-          const flightNo=((message.split("on"))[0]).trim();
-          const date=((message.split("on"))[1]).trim();
-          if(flightNo && date  && isValidDate(date)){
+          const flightNo=((subscriptionmsg.split("on"))[0]);
+          const date=((subscriptionmsg.split("on"))[1]);
+          if(flightNo && date){
+              const dateObj=new Date(date.trim());
+              const _day=dateObj.getDate();
+              const _month=dateObj.getMonth()+1;
+              const _year=dateObj.getFullYear();
+              fbBot.unsubscribe(flightNo.trim(),_day,_month,_year);
               return "Sure! I am just a call away";
           }else{
               return declineArr[Math.round(Math.random() * declineArr.length -1)];
