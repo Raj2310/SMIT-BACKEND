@@ -34,17 +34,17 @@ exports.sendFirstMessage=(f,d,m,y)=>{
         console.log("Booking object from Inside",booking.msg);
           var messages=booking.msg;
         if(messages && messages.length>0){
-            services.sendTextMessage(senderId, messages[messages.length-1]);
+            services.sendTextMessage(senderId, "Flight Number: "+f+"\n"+messages[messages.length-1]);
         }
     },(err)=>{
-console.log("Booking object from error",booking);
+        console.log("Booking object from error",booking);
     })
 }
 exports.sendMessage=(f,d,m,y,msg)=>{
     FbSubs.findOne({flightNo:f,day:d,month:m,year:y},(err,result)=>{
         if(err){
         }else if(result){
-            services.sendTextMessage(senderId, msg);
+            services.sendTextMessage(senderId, "Flight Number: "+f+"\n"+msg);
         }
         else{
         }
