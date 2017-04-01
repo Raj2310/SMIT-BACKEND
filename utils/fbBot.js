@@ -29,6 +29,16 @@ exports.unsubscribe=(f,d,m,y)=>{
         }
     });
 }
+exports.sendTopFiveNotification=()=>{
+    FbSubs.find({}).limit(5).exec(function(err, flights) {
+        dbService.getByFlightNo(flights.flightNo,flights.day,flights.month,flights.year).then((booking)=>{
+        console.log("Booking object from Inside",booking.msg);
+          var messages=booking.msg;
+        if(messages && messages.length>0){
+            services.sendTextMessage(senderId, "Flight Number: "+f+"\n"+messages[messages.length-1]);
+        }
+    });
+}
 exports.sendFirstMessage=(f,d,m,y)=>{
     dbService.getByFlightNo(f,d,m,y).then((booking)=>{
         console.log("Booking object from Inside",booking.msg);

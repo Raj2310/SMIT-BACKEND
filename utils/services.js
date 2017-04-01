@@ -70,11 +70,7 @@ const parseTheDate=(datestring)=>{
             return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
         }
     }else if(/noti/.test(message) && /past/.test(message)){
-      return `1.<Notification #1>
-                      2.<Notification #2>
-                      3.<Notification #3>
-                      4.<Notification #4>
-                      5.<Notification #5>`;
+      fbBot.sendTopFiveNotification();
     }else if(/mute/.test(message)){
         const subscriptionmsg=(message.split("to"))[1];
         if (subscriptionmsg) {
