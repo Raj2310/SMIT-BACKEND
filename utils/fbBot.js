@@ -20,5 +20,5 @@ exports.handleWebhook=function(req,res){
     res.sendStatus(200)
 }
 exports.sendMessage=(bookingObject)=>{
-    services.sendTextMessage(senderId, bookingObject.msg[bookingObject.msg.length-1]);
+    services.sendTextMessage(senderId, bookingObject.msg[0];
 }
