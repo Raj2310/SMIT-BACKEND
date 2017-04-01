@@ -29,6 +29,9 @@
     	return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
 	}
   exports.getMessageType=(msg)=>{
+  const declineArr=[" Oops! I didn't catch you" ,
+   "I don't quite understand" ,
+    "Beg your your pardon! I don't understand what you said"];
  let message=msg.toLowerCase();
     if ((/hi/.test(message) || /hello/.test(message) || /hey/.test(message)  || /hya/.test(message)) && /flybot/.test(message)) {
         return `Hey there, I am here to help you manage your flights over a cup of coffee..!
@@ -43,13 +46,13 @@
           if(flightNo && date){
               return "Hey Your flight has been delayed";
           }else{
-              return "Bujhte parlem naa";
+               return declineArr[Math.round(Math.random() * declineArr.length - 1)];
           }
         }
         else{
-           return "Bujhte parlem naa";
+            return declineArr[Math.round(Math.random() * declineArr.length-1)];
         }
-    }else if(/noti/.test(message) && /past/.test()){
+    }else if(/noti/.test(message) && /past/.test(message)){
       return `1.<Notification #1>
                       2.<Notification #2>
                       3.<Notification #3>
@@ -63,14 +66,13 @@
           if(flightNo && date){
               return "Sure! I am just a call away";
           }else{
-              return "Bujhte parlem naa";
+              return declineArr[Math.round(Math.random() * declineArr.length -1)];
           }
         }
         else{
-           return "Bujhte parlem naa";
         }
     }else{
-       return "Bujhte parlem naa";
+       return declineArr[Math.round(Math.random() *declineArr.length  - 1)];
     }
   }
 
