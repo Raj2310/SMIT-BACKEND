@@ -3,6 +3,7 @@
 	var token = "EAARedKwegwoBAPOFQcZBshYmk1FS60zmyXxtTELhhPvYsTo6UC3dab8BSJ9HAZBH3ERnIZAM7ciVs8XFwr5SO1JaY3dlpZBRgkymLSFsrw0As6YI2X3XmZBMEXSrbStuwFrcUeORVRo1HCpVjrNBYGhpeLddEN2mjEkCd3ERJlwZDZD";
 	var request = require('request')
 	let fs = require('fs');
+  let dbService=require('./dbService');
   var exports = module.exports = {};
   exports.readFile = (filename)=>{
 	 return new Promise((resolve,reject)=>{
@@ -52,7 +53,12 @@ const parseTheDate=(datestring)=>{
               const day=dateObj.getDate();
               const month=dateObj.getMonth();
               const year=dateObj.getFullYear();
-
+              dbService.getByFlightNo(flightNo,day,month,year).then((bookingObject)=>{
+                  return "You are Subscribed to recieve Updates\n"+bookingObject.msg[bookingObject.msg.length-1];
+              },(error)=>{
+                console.log(error);
+                  return "Sorry No flight found";
+              }
               return "Now you are subscribed "+day+" "+month+" "+year ;
           }else{
                return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
