@@ -69,9 +69,32 @@ router.post('/sendMessageToPassengers',function(req,res){
   });
 });
 
-/*router.post('/sendMessageToPassengers1',function(req,res)=<{
-
-});*/
+router.post('/sendMessageToPassengers1',function(req,res)=<{
+  const f=req.body.flight;
+  const message=req.body.message;
+  //const date=req.body.date;
+  Flight.findOne({flightNumber:f},(err,flight)=>{
+    if (err) {
+      console.log(err);
+      res.send({status:false});
+    } else {
+      const bookingpk=flight._id;
+     Booking.find({'flight':mongoose.Types.ObjectId(bookingpk)},(err,bookings)=>{
+        if (err) {
+          console.log(err);
+          res.send({status:false});
+        } else {
+        //console.log(result);
+          bookings.forEach((bookingObject)=>{
+            webpush.sendPushNotification(bookingObject.user,message);
+            dbService.addMsgToDatabase(bookingObject._id,message);
+          });
+          res.send({status:true})
+        }
+      });
+    }
+  });
+});
 
 router.post('/login',(req,res)=>{
   let email=req.body.email;

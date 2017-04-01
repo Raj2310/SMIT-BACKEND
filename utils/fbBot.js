@@ -10,7 +10,6 @@ exports.handleWebhook=function(req,res){
         if (event.message && event.message.text) {
             console.log(sender);
             text = event.message.text;
-            services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
             if(services.varifyMessage(text)){
                 services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
             }else{
