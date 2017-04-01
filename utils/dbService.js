@@ -51,7 +51,7 @@
       				}
       			});
     		}else{
-       			res.send({status:false,msg:"Flight not found"});
+       			reject({status:false,msg:"Flight not found"});
     		}
   		});
   	})
