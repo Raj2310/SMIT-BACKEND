@@ -12,9 +12,9 @@ const wp = require('web-push');
 let fbBot=require('../utils/fbBot.js');;
 
 
-router.post('/test', (req, res)=> {
-  const message=req.body.msg;
-  res.json(services.getMessageType(message));
+router.get('/test', (req, res)=> {
+  
+  res.json(jwt.generateToken({bookings:[]}));
 });
 /*
 router.post('/',(req,res)=>{

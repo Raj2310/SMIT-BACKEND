@@ -44,7 +44,7 @@
           const flightNo=((message.split("on"))[0]).trim();
           const date=((message.split("on"))[1]).trim();
           if(flightNo && date){
-              return "Hey Your flight has been delayed";
+              return "Flight No "+flightNo+" date"+date;
           }else{
                return declineArr[Math.round(Math.random() * declineArr.length - 1)];
           }
