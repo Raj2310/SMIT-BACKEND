@@ -25,5 +25,8 @@ exports.sendMessage=(f,d,m,y,msg)=>{
         }else if(result){
             services.sendTextMessage(senderId, msg);
         }
+        else{
+             services.sendTextMessage(senderId, "msg");
+        }
     });
 }
