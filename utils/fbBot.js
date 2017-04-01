@@ -38,7 +38,7 @@ exports.sendFirstMessage=(f,d,m,y)=>{
             services.sendTextMessage(senderId, messages[messages.length-1]);
         }
     },(err)=>{
-
+console.log("Booking object from error",booking);
     })
 }
 exports.sendMessage=(f,d,m,y,msg)=>{
