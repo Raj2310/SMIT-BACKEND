@@ -11,7 +11,7 @@ exports.handleWebhook=function(req,res){
             console.log(sender);
             text = event.message.text;
             if(services.varifyMessage(text)){
-                services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight");
+                services.sendTextMessage(sender, "Thank you , you will recieve messages for above flight You are"+sender);
             }else{
                 services.sendTextMessage(sender, "OOPS!! You need to insert in correct format : \" flight-number on year,month,day\" "); 
             }     
