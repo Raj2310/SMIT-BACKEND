@@ -40,7 +40,7 @@ const parseTheDate=(datestring)=>{
    "I don't quite understand" ,
     "Beg your your pardon! I don't understand what you said"];
  let message=msg.toLowerCase();
-    if ((/hi/.test(message) || /hello/.test(message) || /hey/.test(message)  || /hya/.test(message)) && /flybot/.test(message)) {
+    if ((/hi/.test(message) || /hello/.test(message) || /hey/.test(message)  || /hya/.test(message))) {
         return `Hey there, I am here to help you manage your flights over a cup of coffee..!
                  Here is how I can help
                 1. Subscribe me to <filght id> on <date>
