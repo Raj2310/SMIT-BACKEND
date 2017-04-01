@@ -24,6 +24,10 @@
     const currentDate=new Date();
     return currentDate<flghtDate;
 }
+	exports.parseTheDate(datestring)=>{
+		const flghtDate=new Date(date);
+    	return {day:flghtDate.getDate(),month:flightDate.getMonth(),year:flightDate.getFullYear()};
+	}
   exports.varifyMessage=(msg)=>{
     const arr=msg.split("on");
     if(arr.length===2){
