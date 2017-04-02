@@ -179,13 +179,13 @@ router.get('/userFlightsInfo1/:Key',(req,res)=>{
   }).then((user)=>{
       const userid=user._id;
       console.log(userid);
-      return dbService.getBookingForUser(userid);
+      return dbService.getBookingForUser1(userid);
   },(errorUserSchema)=>{
       console.log(errorUserSchema);
        res.send("Some error occured in User Schema");
   }).then((arrbooking)=>{
     responseObj.bookings=arrbooking;
-    res.send({destinationName:responseObj.destinationName,sourceName:responseObj.sourceName,flightNo:responseObj.flightNo,date:responseObj.date,flight:responseObj.flight,booking:responseObj.booking});
+    res.send({responseObj});
   },(errbooking)=>{
     console.log(errbooking);
     res.send("Some error occured in User Schema");

@@ -127,6 +127,43 @@
         });
     });
   };
+  getFlightInfoForBooking1=(bookingObj)=>{
+    return new Promise((resolve,reject)=>{
+      console.log("booking recieved",bookingObj.flight);
+      Flight.findOne({_id:bookingObj.flight},(errFlight,flight)=>{
+                if (errFlight) {
+                  reject({status:false,msg:"Error occured Flight not found"});
+                } else {
+
+                  var obj=bookingObj.toObject();
+                  console.log("FLight Info",flight);
+                  obj.flightNo=flight.flightNumber;
+                  obj.source=flight.source;
+                  obj.destination=flight.destination;
+                  obj.time=flight.time;
+                  Airport.findOne({_id:obj.source},(errSourceAirport,sourceAirport)=>{
+                      if (errSourceAirport) {
+                        reject({status:false,msg:"Error occured errSourceAirport not found"});
+                      } else {
+                        obj.sourceAddress=sourceAirport.address;
+                        obj.sourceCity=sourceAirport.city;
+                        obj.sourceName=sourceAirport.name;
+                        Airport.findOne({_id:obj.destination},(errDestinationAirport,destinationAirport)=>{
+                            if (errSourceAirport) {
+                              reject({status:false,msg:"Error occured errSourceAirport not found"});
+                            } else {
+                              obj.destinationAddress=destinationAirport.address;
+                              obj.destinationCity=destinationAirport.city;
+                              obj.destinationName=destinationAirport.name;
+                              resolve(destinationName:obj.destinationName,sourceName:obj.sourceName,flightNo:obj.flightNo,date:obj.date,flight:obj.flight,booking:obj.booking);
+                            }
+                    });
+                      }
+              });
+                }
+        });
+    });
+  };
   getSourceInfoForBooking=(bookingObj)=>{
   	return new Promise((resolve,reject)=>{
   		console.log("Source airport",bookingObj.source);
