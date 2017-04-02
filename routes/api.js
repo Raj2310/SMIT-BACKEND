@@ -164,6 +164,34 @@ const authKey=req.params.authKey;
        res.send({status:false,message:"Authentication Failed"})
   }
 });
+
+router.get('/userFlightsInfo1/:Key',(req,res)=>{
+   let responseObj={
+    bookings:[]
+  };
+  const authkey=req.params.Key;
+  dbService.varifyAuthkey(authkey).then((userObject)=> {
+    responseObj.user=userObject.object;
+    return  dbService.getUserByEmail(userObject.object.email);
+  },(err)=> {
+    console.log(err); // Error: "It broke"
+    res.send("Some error occured");
+  }).then((user)=>{
+      const userid=user._id;
+      console.log(userid);
+      return dbService.getBookingForUser(userid);
+  },(errorUserSchema)=>{
+      console.log(errorUserSchema);
+       res.send("Some error occured in User Schema");
+  }).then((arrbooking)=>{
+    responseObj.bookings=arrbooking;
+    res.send({destinationName:responseObj.destinationName,sourceName:responseObj.sourceName,flightNo:responseObj.flightNo,date:responseObj.date,flight:responseObj.flight,booking:responseObj.booking});
+  },(errbooking)=>{
+    console.log(errbooking);
+    res.send("Some error occured in User Schema");
+  });
+
+
 router.get('/userFlightsInfo/:Key',(req,res)=>{
    let responseObj={
     bookings:[]
