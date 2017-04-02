@@ -6,7 +6,7 @@ let Schema=mongoose.Schema;
 
 let FbSubsSchema=new Schema({
 	flightNo:{
-		type:String
+		type:String,
 	},
 	day:{
 		type:String

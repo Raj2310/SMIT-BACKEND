@@ -60,14 +60,14 @@ Here is how I can help
 
               });
               fbBot.sendFirstMessage(flightNo,_day,_month,_year);
-              return "You are subscribed to recieve notification";
+              return "We will keep you hooked up!";
 
           }else{
-               return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
+               return "Sorry!  enter in format \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
           }
         }
         else{
-            return "Sorry the type \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
+            return "Sorry enter in format \"Subscribe to <flightNo> on <yyyy,mm,dd>\"";
         }
     }else if(/noti/.test(message) && /past/.test(message)){
       fbBot.sendTopFiveNotification();
