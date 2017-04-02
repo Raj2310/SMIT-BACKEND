@@ -155,11 +155,11 @@
                               obj.destinationAddress=destinationAirport.address;
                               obj.destinationCity=destinationAirport.city;
                               obj.destinationName=destinationAirport.name;
-                              resolve(destinationName:obj.destinationName,sourceName:obj.sourceName,flightNo:obj.flightNo,date:obj.date,flight:obj.flight,booking:obj.booking);
+                              resolve({destinationName:obj.destinationName,sourceName:obj.sourceName,flightNo:obj.flightNo,date:obj.date,flight:obj.flight,booking:obj.booking,BookingId:obj.BookingId});
                             }
-                    });
+                        });
                       }
-              });
+                  });
                 }
         });
     });
@@ -212,5 +212,28 @@
 		    }
 	 	})
   	})
+  }
+   exports.getBookingForUser1=(userid)=>{
+    return new Promise((resolve,reject)=>{
+           Booking.find({user:userid},(err,arrbooking)=>{
+        if (err) {
+          console.log(err);
+          reject({status:false,msg:"Error occured User not found"});
+        } else {
+          //console.log(arrbooking);
+          var promises = [];
+        arrbooking.forEach((bookingobj)=> {
+            promises.push(getFlightInfoForBooking1(bookingobj));
+        });
+        Promise.all(promises).then(function(result) {
+          resolve(result);        
+        }, function(err1) {
+          console.log(err1);
+            reject({status:false,msg:"Error occured User not found"});
+        });
+          
+        }
+    })
+    })
   }
 })();
