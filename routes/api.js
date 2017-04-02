@@ -211,8 +211,7 @@ router.get('/userFlightsInfo/:Key',(req,res)=>{
       console.log(errorUserSchema);
        res.send("Some error occured in User Schema");
   }).then((arrbooking)=>{
-    responseObj.bookings=arrbooking;
-    res.send(responseObj);
+    res.send(arrbooking);
   },(errbooking)=>{
     console.log(errbooking);
     res.send("Some error occured in User Schema");
