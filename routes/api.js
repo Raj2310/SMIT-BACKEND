@@ -217,6 +217,7 @@ router.get('/userFlightsInfo/:Key',(req,res)=>{
     console.log(errbooking);
     res.send("Some error occured in User Schema");
   });
+});
   /*
 dbService.getUserByEmail(userObject.object.email).then((user)=>{
       const userid=user._id;
