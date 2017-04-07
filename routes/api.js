@@ -190,9 +190,9 @@ router.get('/userFlightsInfo1/:Key',(req,res)=>{
     console.log(errbooking);
     res.send("Some error occured in User Schema");
   });
+});
 
-
-router.get('/userFlightsInfo/:Key',(req,res)=>{
+router.get('/userFlightsInfo/:Key/',(req,res)=>{
    let responseObj={
     bookings:[]
   };
@@ -212,6 +212,7 @@ router.get('/userFlightsInfo/:Key',(req,res)=>{
        res.send("Some error occured in User Schema");
   }).then((arrbooking)=>{
     responseObj.bookings=arrbooking;
+    console.log(responseObj);
     res.send(responseObj);
   },(errbooking)=>{
     console.log(errbooking);
@@ -274,9 +275,9 @@ dbService.getUserByEmail(userObject.object.email).then((user)=>{
           res.send({status:false,msg:"User not found"});
       }
     }
-  })*/
+  })
 
-})
+})*/
 router.get('/getUser/:key',(req,res)=>{
     let authkey=req.params.key;
     let user=jwt.varifyToken(authkey);
@@ -316,38 +317,38 @@ router.post('/generateBoardingPass',(req,res)=>{
 });
 
 router.post('/push-subscribe',(req,res)=>{
-const authkey=req.body.authKey;
-const subscription=req.body.subs;
-dbService.varifyAuthkey(authkey).then((userObject)=> {
-  console.log(userObject);
-  const userEmail=userObject.object.email;
-  User.findOneAndUpdate({email: userEmail}, {$set: {subscriptionKey: subscription}},(err,result)=>{
-  if(err){
-    console.log(err);
-    res.send(error);
-  }
-  else{
-    console.log("User subscribed");
-    res.send(result);
-  }
+  const authkey=req.body.authKey;
+  const subscription=req.body.subs;
+  dbService.varifyAuthkey(authkey).then((userObject)=> {
+    console.log(userObject);
+    const userEmail=userObject.object.email;
+    User.findOneAndUpdate({email: userEmail}, {$set: {subscriptionKey: subscription}},(err,result)=>{
+    if(err){
+      console.log(err);
+      res.send(error);
+    }
+    else{
+      console.log("User subscribed");
+      res.send(result);
+    }
+    });
+    //const userEmail=userObje  ct.object.email;
+  }).catch(function(error){
+   res.send({status:false,msg:"User not found"});
   });
-  //const userEmail=userObje  ct.object.email;
-}).catch(function(error){
- res.send({status:false,msg:"User not found"});
-});
 });
 
 
 router.post('/msgFrmServer',(req,res)=>{
-Booking.findOneAndUpdate({BookingId: req.body.b_id}, {$push: {msg: req.body.msg}},(err,result)=>{
-  if(err){
-    console.log(err);
-    res.send(error);
-  }
-  else{
-    res.send(result);
-  }
-});
+  Booking.findOneAndUpdate({BookingId: req.body.b_id}, {$push: {msg: req.body.msg}},(err,result)=>{
+    if(err){
+      console.log(err);
+      res.send(error);
+    }
+    else{
+      res.send(result);
+    }
+  });
 });
 
 router.get('/booking/:bookingId',(req,res)=>{
