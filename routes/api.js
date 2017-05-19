@@ -114,7 +114,7 @@ router.post('/login',(req,res)=>{
   User.findOne({email:email,password:password},(err,result)=>{
     if (err) {
       console.log(err);
-      
+
     } else {
       if(result){
       let token=jwt.generateToken({name:result.name,email:result.email});
@@ -123,7 +123,7 @@ router.post('/login',(req,res)=>{
       else{
         res.send({status:false,msg:"User not found"});
       }
-      
+
     }
   });
 });
@@ -165,32 +165,7 @@ const authKey=req.params.authKey;
   }
 });
 
-router.get('/userFlightsInfo1/:Key',(req,res)=>{
-   let responseObj={
-    bookings:[]
-  };
-  const authkey=req.params.Key;
-  dbService.varifyAuthkey(authkey).then((userObject)=> {
-    responseObj.user=userObject.object;
-    return  dbService.getUserByEmail(userObject.object.email);
-  },(err)=> {
-    console.log(err); // Error: "It broke"
-    res.send("Some error occured");
-  }).then((user)=>{
-      const userid=user._id;
-      console.log(userid);
-      return dbService.getBookingForUser1(userid);
-  },(errorUserSchema)=>{
-      console.log(errorUserSchema);
-       res.send("Some error occured in User Schema");
-  }).then((arrbooking)=>{
-    responseObj.bookings=arrbooking;
-    res.send({responseObj});
-  },(errbooking)=>{
-    console.log(errbooking);
-    res.send("Some error occured in User Schema");
-  });
-});
+
 
 router.get('/userFlightsInfo/:Key/',(req,res)=>{
    let responseObj={
@@ -230,7 +205,7 @@ dbService.getUserByEmail(userObject.object.email).then((user)=>{
         console.log(errbooking);
         res.send("Some error occured in User Schema");
       })
-      
+
     },(errorUserSchema)=>{
       console.log(errorUserSchema);
        res.send("Some error occured in User Schema");
@@ -268,7 +243,7 @@ dbService.getUserByEmail(userObject.object.email).then((user)=>{
                 responseObj.bookings.push(bookingObj);
                   res.send(responseObj);
               });
-              
+
             });
         });
       }else{
@@ -309,7 +284,7 @@ router.post('/generateBoardingPass',(req,res)=>{
           res.send({status:false,msg:"An error occured"});
         }
         else{
-            res.send({status:true,obj:updatedBooking});  
+            res.send({status:true,obj:updatedBooking});
         }
      });
     }
